@@ -6,19 +6,19 @@
 # マンガリスト (Manga List, Lista de Mangá)
 
 Sisteminha de CRUD implementado em Python para disciplina de Introdução à Python na Residência em Visão Computacional pelo CIn-UFPE.
-Em resumo, será feito um banco de dados em arquivo de mangás e as funcionalidades do CRUD serão aplicadas no banco de dados.
+Em resumo, será feito um banco de dados em arquivo de mangás e as funcionalidades do CRUD serão aplicadas nesse banco de dados.
 
-> Mangá (漫画) é um termo japonês usada para designar uma história em quadrinhos (no Japão se refere a qualquer história em quadrinhos mas em outros países, se refere à história em quadrinhos japonesa. [Referência aqui](https://pt.wikipedia.org/wiki/Mang%C3%A1).).
+> Mangá (漫画) é um termo japonês usado para designar uma história em quadrinhos (no Japão se refere a qualquer história em quadrinhos mas em outros países, se refere à história em quadrinhos japonesa. [Referência aqui](https://pt.wikipedia.org/wiki/Mang%C3%A1).).
 
 ## Requisitos
 
 * Sistema com funcionalidades CRUD (create, read, update and delete ou criar, ler, atualizar e deletar)
-* Ao realizar as funcionalidades, elas também deverão ser feitas num arquivo
-* É necessário ter um menu para realizar interação com o usuário
+* Ao realizar as funcionalidades, elas também deverão ser feitas em registros num arquivo txt
+* É necessário ter um menu para realizar interação com o usuário (seja no prompt/terminal ou uma interface gráfica)
 
 ## Estrutura do arquivo
 
-Cada linha do arquivo vai conter atributos de um mangá. Cada atributo é dividido em ponto e vírgula (;).
+Cada linha do arquivo vai conter atributos do registro de um mangá. Cada atributo é dividido em ponto e vírgula (;).
 Os atributos escolhidos para cada mangá foram:
 
 * nome
@@ -38,11 +38,11 @@ Os atributos escolhidos para cada mangá foram:
 ```
 TESTE3;NANA;Ai Yazawa;Hiato;2000;2009;Duas gurias com o mesmo nome se encontram e viram amigas. Melhor anime/mangá do universo.;21;Josei;[Drama,Romance,Slice of Life];Shueisha;Cookie;[[2000_1_1000],[2000_2_2000],[2000_3_1500],[2000_4_1600],[2009_12_11050]]
 ```
-## Contexto geral de funcionamento do projeto
+## Contexto geral de funcionamento do sistema
 
 Uma variável do tipo [dicionário](https://docs.python.org/3/tutorial/datastructures.html#dictionaries) ficará responsável por manter a persistência local dos dados, porém, o sistema deverá manter atualizado o arquivo onde estão os dados sempre que uma funcionalidade for acionada. Ou seja, de acordo com a opção escolhida pelo usuário (criar, ler, editar e deletar um mangá), o registro deverá ser mantido localmente na variável e no arquivo.
 
-### Exemplo do conteúdo do dicionário
+### Exemplo do conteúdo da variável dicionário
 ```
 {
     'TESTE3': 
