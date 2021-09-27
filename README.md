@@ -75,3 +75,10 @@ Uma variável do tipo [dicionário](https://docs.python.org/3/tutorial/datastruc
 * impressao: __9__
 * revista: __10__
 * venda_mensal: __11__
+
+## Contribuidoras
+
+Arianne 🦄 - [@annemacena](https://github.com/annemacena) - ariannemacena@gmail.com | asm7@cin.ufpe.br
+
+Laianna 🧁 - [@Laianna](https://github.com/Laianna) - llvs2@cin.ufpe.br
+
