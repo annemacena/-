@@ -192,17 +192,48 @@ def deletar_manga(dic, id):
     atualizar_arquivo(dic)
 
 def imprimir_menu():
-    pass
+    print("""
+⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷
+⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇
+⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽
+⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕
+⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕
+⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕
+⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄
+⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕
+⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿
+⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟
+⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠
+⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙
+⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣
+⡆⠉⠉⠉⠉⠉⠉ マンガリスト。⠉⠉⠉⠉⠉⠉⠉⠙
+⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈
+ Seja bem-vinde ao MangaList!
+⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈
+⡫                            ⡣
+⡫   O que você deseja fazer? ⡣
+⡫   Escolha uma oção:        ⡣
+⡫                            ⡣
+⢄ 1. Visualizar todos mangás ⣈
+⡀ 2. Visualizar um mangá     ⠁
+⢱ 3. Editar um mangá         ⢗
+⡄ 4. Excluir um mangá        ⠼
+⡆ 5. Sair                    ⣌
+⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈
+""")
 
-registros = ler_arquivo()
-dic_mangas = construir_dicionario(registros)
+# registros = ler_arquivo()
+# dic_mangas = construir_dicionario(registros)
 
-id_teste = "TESTE3"
-dados_manga_nana = dic_mangas[id_teste]
-dados_manga_nana[6] = "22" # volumes (atual é 21)
+# id_teste = "TESTE3"
+# dados_manga_nana = dic_mangas[id_teste]
+# dados_manga_nana[6] = "22" # volumes (atual é 21)
 
-atualizar_manga(dados_manga_nana, dic_mangas, id_teste)
+# atualizar_manga(dados_manga_nana, dic_mangas, id_teste)
 
 #deletar_manga(dic_mangas, id_teste)
+
+imprimir_menu()
 
 
