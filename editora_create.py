@@ -4,6 +4,8 @@ from main import adicionar_colchetes_string
 from main import transformar_dicionario_em_lista
 from main import ler_arquivo
 from main import atualizar_arquivo
+import os
+#from termcolor import colored
 """
 id: string
 nome: string
@@ -19,6 +21,23 @@ impressao: string
 revista: string
 venda_mensal: [ [ano, mes, quantidade], [ano, mes, quantidade], ..., [ano, mes, quantidade] lista de lista de int
 """
+
+PRETO = '\u001b[30m'
+VERMELHO = '\u001b[31m'
+VERDE = '\u001b[32m'
+AMARELO = '\u001b[33m'
+AZUL = '\u001b[34m'
+MAGENTA = '\u001b[35m'
+CIANO = '\u001b[36m'
+BRANCO = '\u001b[37m'
+RESET = '\u001b[0m'
+NEGRITO = '\u001b[1m'
+SUBLINHADO = '\u001b[4m'
+REVERSO = '\u001b[7m'
+BG_PRETO = '\u001b[43m'
+LISTA_MESES = ('','Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro')
+
+
 # ----------------------------------------------------------------------------#
 # -------------------------------------ID-------------------------------------#
 # ----------------------------------------------------------------------------#
@@ -246,50 +265,114 @@ def adicionar_manga(dic_mangas):
     print(f"Cadastro efetuado com sucesso.")
 
 
+
+
+
+
 # ----------------------------------------------------------------------------#
 # -----------------------------PRINTAR DICIONÁRIO-----------------------------#
 # ----------------------------------------------------------------------------#
-# FALTA AJEITAR ESSAS DUAS FUNÇÕES DE PRINTAR
-def exibir_vendas(lista_de_todas_as_vendas):
-    lista_mes = ['','Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+def exibir_ano_final(ano_final, status, cor_tit, cor_inf):
+    
+    if status == "Completo" or status == "Cancelado":
+        print(f"{cor_tit}Ano final de publicação: {cor_inf}{ano_final}")
+    
+def transformar_string_em_int(lista_string):
+    
+    lista_int = []
+    for string in lista_string:
+         lista_int.append([int(i) for i in string])
+    
+    lista_int.sort()
+    return lista_int
 
-    lista_int_de_todas_as_vendas = []
-    for lista_venda_mensal in lista_de_todas_as_vendas:
-         lista_int_de_todas_as_vendas.append([int(i) for i in lista_venda_mensal])
+def exibir_vendas(venda_mensal, cor_tit, cor_inf):
+
+    venda_mensal_int = transformar_string_em_int(venda_mensal)
     
-    lista_int_de_todas_as_vendas.sort()
-    #print(lista_int_de_todas_as_vendas)
-    
-    ano_atual = lista_int_de_todas_as_vendas[0][0]
-    print(f"Ano: {ano_atual}")
-    for ano, mes, quantidade in lista_int_de_todas_as_vendas:
-        if ano == ano_atual:
-            print(f"    {lista_mes[mes]} - {quantidade} cópias vendidas")
-        else:
+    ano_atual = venda_mensal_int[0][0]
+    string1 = f"{cor_inf}Ano: {ano_atual}"
+
+    print(f"{string1}")
+
+    for ano, mes, quantidade in venda_mensal_int:
+        if ano != ano_atual:
             ano_atual = ano
-            print(f"Ano: {ano_atual}")
-            print(f"    {lista_mes[mes]} - {quantidade} cópias vendidas")
+            print(f"{string1}")
+
+        print(f"    {LISTA_MESES[mes]} - {quantidade} cópia", end = '')
+        print("s vendidas" if quantidade > 1 else " vendida")
+
+
+def exibir_valores_dicionário(id, nome, autor, status, ano_inicio, ano_fim,
+                                sinopse, num_de_volumes, publico, genero,
+                                impressao, revista, venda_mensal,
+                                cor_sep, cor_tit, cor_inf):
+    
+    print(f"\n{cor_sep}(¸.•´ (¸.•´ .•´ ¸.•´ .•´ ¸¸.•¨¯`•.•´¯¨•.¸¸ `•. `•.¸ `•. `•.¸) `•.¸)\n")
+    print(f"{cor_tit}\tInformação sobre o mangá {cor_inf}{id}\n")
+    print(f"{cor_tit}Nome: {cor_inf}{nome}")
+    print(f"{cor_tit}Autor(a): {cor_inf}{autor}")
+    print(f"{cor_tit}Status: {cor_inf}{status}")
+    print(f"{cor_tit}Ano inicial de publicação: {cor_inf}{ano_inicio}")
+    exibir_ano_final(ano_fim, status, cor_tit, cor_inf)
+    print(f"{cor_tit}Sinopse: {cor_inf}{sinopse}")
+    print(f"{cor_tit}Número de volumes: {cor_inf}{num_de_volumes}")
+    print(f"{cor_tit}Público: {cor_inf}{publico}")        
+    print(f"{cor_tit}Gênero(s): {cor_inf}{', '.join(genero)}")        
+    print(f"{cor_tit}Impressão do Tankobon: {cor_inf}{impressao}")
+    print(f"{cor_tit}Revista de publicação dos capítulos: {cor_inf}{revista}")
+    print(f"{cor_tit}Vendas mensais:")
+    exibir_vendas(venda_mensal, cor_tit, cor_inf)
+    print(f"\n{cor_sep}(¸.•´ (¸.•´ .•´ ¸.•´ .•´ ¸¸.•¨¯`•.•´¯¨•.¸¸ `•. `•.¸ `•. `•.¸) `•.¸)")
     
 
 def exibir_dicionário_completo(dic_mangas):
+    
+    os.system(f"cls")
+    
+    cor_sep = AMARELO
+    cor_tit = AMARELO
+    cor_inf = RESET
+    cor_neko = CIANO
+    #texto = colored('Hello and Welcome to FINXTER!', attrs=['bold'])  # bold-text
+    #print(texto)
+    
 
-    for chaves in dic_mangas.keys():
-        print(f"\n***********************************************\n")
-        print(f"Informação sobre o mangá {chaves}")
-        print(f"Nome: {dic_mangas[chaves][0]}")
-        print(f"Autor(a): {dic_mangas[chaves][1]}")
-        print(f"Status: {dic_mangas[chaves][2]}")
-        print(f"Ano inicial de publicação: {dic_mangas[chaves][3]}")
-        print(f"Ano final de publicação: {dic_mangas[chaves][4]}")
-        print(f"Sinopse: {dic_mangas[chaves][5]}")
-        print(f"Número de volumes: {dic_mangas[chaves][6]}")
-        print(f"Público: {dic_mangas[chaves][7]}")        
-        print(f"Gênero(s): {', '.join(dic_mangas[chaves][8])}")        
-        print(f"Impressão do Tankobon: {dic_mangas[chaves][9]}")
-        print(f"Revista de publicação dos capítulos: {dic_mangas[chaves][10]}")
-        print(f"Vendas mensais:")
-        exibir_vendas(dic_mangas[chaves][11])
-        print(f"\n***********************************************\n")
+    print(f"\n\n\n{cor_neko}")
+    print("⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢐")
+    print("⡫  O⠀ acervo  ⡫⠀⠀       ⣰⣷⣦")
+    print("⡫             ⡫        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
+    print("⡫ está abaixo ⡫     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print("⡫             ⡫    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print("⡫    \   /    ⡫  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
+    print("⡫     \ /     ⡫  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
+    print("⡫      Y      ⡫⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
+    print("⡫             ⡫ ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
+    print(f"⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢐   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
+
+    for chave in dic_mangas.keys():
+        exibir_valores_dicionário(chave,
+                                  dic_mangas[chave][0], dic_mangas[chave][1],
+                                  dic_mangas[chave][2], dic_mangas[chave][3],
+                                  dic_mangas[chave][4], dic_mangas[chave][5],
+                                  dic_mangas[chave][6], dic_mangas[chave][7],
+                                  dic_mangas[chave][8], dic_mangas[chave][9],
+                                  dic_mangas[chave][10], dic_mangas[chave][11],
+                                  cor_sep, cor_tit, cor_inf)
+        
+    print(f"\n\n{cor_neko}")
+    print("⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕")
+    print("⡫             ⡫")
+    print("⡫  O⠀ acervo  ⡫⠀⠀       ⠀ ⠀⠀⢠⣿⣶⣄⣀⡀                     ")
+    print("⡫             ⡫           ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇      ")
+    print("⡫ está acima  ⡫     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇      ")
+    print("⡫             ⡫       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇      ")
+    print("⡫      ^      ⡫   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄    ")
+    print("⡫     / \     ⡫   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧   ")
+    print("⡫    /   \    ⡫⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷  ")
+    print("⡫             ⡫")
+    print(f"⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
 
 # ----------------------------------------------------------------------------#
 # --------------------------------BUSCAR MANGÁ--------------------------------#
@@ -297,10 +380,29 @@ def exibir_dicionário_completo(dic_mangas):
 def buscar_manga(dic_mangas, chave):
 
     if chave in dic_mangas.keys():
-        print(f"Mangá encontrado.")
-        print(dic_mangas[chave])
-
-    print(f"O mangá com o ID: {chave}, não foi encontrado.")
+        cor_sep = CIANO
+        cor_tit = CIANO
+        cor_inf = RESET
+        exibir_valores_dicionário(chave,
+                                  dic_mangas[chave][0], dic_mangas[chave][1],
+                                  dic_mangas[chave][2], dic_mangas[chave][3],
+                                  dic_mangas[chave][4], dic_mangas[chave][5],
+                                  dic_mangas[chave][6], dic_mangas[chave][7],
+                                  dic_mangas[chave][8], dic_mangas[chave][9],
+                                  dic_mangas[chave][10], dic_mangas[chave][11],
+                                  cor_sep, cor_tit, cor_inf)
+        
+    else:
+        print( "\n\n" )
+        print( "    ,.  ,.                       (｡╯︵╰｡)" )
+        print( "    ||  ||           -----------------------------------" )
+        print( "   ,''--''.        /                                    |" )
+        print( "  : (.)(.) :      /  O mangá com o ID:                  |" )
+        print(f" ,'   ︵   `.   <    {chave}" )
+        print( " :          :     \  NÃO foi encontrado.                |" )
+        print( " :          :      \                                    |" )
+        print( " `._m____m_,'        -----------------------------------" )
+        print( "\n\n" )
 
 n = 1
 lista_mangas = ler_arquivo()
@@ -310,6 +412,7 @@ for i in range(n):
     adicionar_manga(dic_mangas)
 print(dic_mangas)'''
 
-chave = 'TESTE3'
-#buscar_manga(dic_mangas, chave)
+chave = 'TESTE5'
+buscar_manga(dic_mangas, chave)
 exibir_dicionário_completo(dic_mangas)
+
