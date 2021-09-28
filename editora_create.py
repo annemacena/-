@@ -1,4 +1,9 @@
-# -*- coding: utf-8 -*-
+from main import transformar_string_em_lista
+from main import construir_dicionario
+from main import adicionar_colchetes_string
+from main import transformar_dicionario_em_lista
+from main import ler_arquivo
+from main import atualizar_arquivo
 """
 id: string
 nome: string
@@ -32,7 +37,7 @@ def adicionar_id(dic_mangas):
     
     flag_id_repetido = True
     while flag_id_repetido == True:
-        id = input(("Entre com o ID do novo mangá que você deseja cadastrar: "))
+        id = input(("Entre com o ID único do novo mangá que você deseja cadastrar: "))
         flag_id_repetido = checar_id(id, dic_mangas)
         
     return id
@@ -81,7 +86,7 @@ def adicionar_ano_inicio():
         ano_inicio = int(input(("Entre com o ano que o mangá começou a ser publicado: ")))
         flag_ano_inicio_valido = checar_ano_inicio(ano_inicio)
         
-    return int(ano_inicio)
+    return str(ano_inicio)
 
 
 # ----------------------------------------------------------------------------#
@@ -102,7 +107,7 @@ def adicionar_ano_fim(status, ano_inicio):
     # Se o mangá estiver em Andamento ou em Hiato,
     # ele ainda não terminou de ser publicado
     if status == "Andamento" or status == "Hiato":
-        return None
+        return 'None'
     
     # status == "Completo" or status == "Cancelado"
     flag_ano_fim_valido = False
@@ -110,7 +115,7 @@ def adicionar_ano_fim(status, ano_inicio):
         ano_fim = int(input(("Entre com o ano que o mangá terminou de ser publicado: ")))
         flag_ano_fim_valido = checar_ano_fim(ano_fim, ano_inicio)
         
-    return int(ano_fim)
+    return str(ano_fim)
 
 
 # ----------------------------------------------------------------------------#
@@ -133,7 +138,7 @@ def adicionar_num_volumes():
         num_de_volumes = int(input(("Entre com a quantidade de volumes que o mangá possui: ")))
         flag_num_volumes_valido = checar_num_volumes(num_de_volumes)
         
-    return int(num_de_volumes)
+    return str(num_de_volumes)
 
 
 # ----------------------------------------------------------------------------#
@@ -204,7 +209,7 @@ def adicionar_vendas_mensais(venda_mensal, ano_inicio):
         if continua == "n":
             flag_cadastrar_venda = False
             
-        venda_mensal.append([ano_venda, mes_venda, quantidade])
+        venda_mensal.append([str(ano_venda), str(mes_venda), str(quantidade)])
         
     venda_mensal.sort()
 
@@ -219,7 +224,7 @@ def adicionar_manga(dic_mangas):
     autor = input(("Entre com o nome do autor do mangá que você deseja cadastrar: "))
     status = adicionar_status()
     ano_inicio = adicionar_ano_inicio()
-    ano_fim = adicionar_ano_fim(status, ano_inicio)
+    ano_fim = adicionar_ano_fim(status, int(ano_inicio))
     sinopse = input(("Entre com a sinopse do mangá que você deseja cadastrar: "))
     num_de_volumes = adicionar_num_volumes()
     publico = adicionar_publico()
@@ -228,15 +233,83 @@ def adicionar_manga(dic_mangas):
     impressao = input(("Entre com a gráfica de impressão do mangá: "))
     revista = input(("Entre com a revista de publicação do mangá: "))
     venda_mensal = []
-    adicionar_vendas_mensais(venda_mensal, ano_inicio)
+    adicionar_vendas_mensais(venda_mensal, int(ano_inicio))
 
     dic_mangas[id] = [nome, autor, status, ano_inicio, ano_fim, sinopse, num_de_volumes, publico, genero, impressao, revista, venda_mensal]
-    print(f"Cadastro efetuado com sucesso.")
+    #print(dic_mangas)
     
-    #atualizar o arquivo
+    '''id = 'MNG_OP'
+    dic_mangas[id] = ['Op', 'Oda', 'Andamento', '2016', 'None', 'Pirata', '110', 'Shonen', ['Ação'], 'Jump', 'Comics', [['2020', '2', '10']]]
+    print(dic_mangas)'''
+    
+    atualizar_arquivo(dic_mangas)
+    print(f"Cadastro efetuado com sucesso.")
+
+
+# ----------------------------------------------------------------------------#
+# -----------------------------PRINTAR DICIONÁRIO-----------------------------#
+# ----------------------------------------------------------------------------#
+# FALTA AJEITAR ESSAS DUAS FUNÇÕES DE PRINTAR
+def exibir_vendas(lista_de_todas_as_vendas):
+    lista_mes = ['','Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+
+    lista_int_de_todas_as_vendas = []
+    for lista_venda_mensal in lista_de_todas_as_vendas:
+         lista_int_de_todas_as_vendas.append([int(i) for i in lista_venda_mensal])
+    
+    lista_int_de_todas_as_vendas.sort()
+    #print(lista_int_de_todas_as_vendas)
+    
+    ano_atual = lista_int_de_todas_as_vendas[0][0]
+    print(f"Ano: {ano_atual}")
+    for ano, mes, quantidade in lista_int_de_todas_as_vendas:
+        if ano == ano_atual:
+            print(f"    {lista_mes[mes]} - {quantidade} cópias vendidas")
+        else:
+            ano_atual = ano
+            print(f"Ano: {ano_atual}")
+            print(f"    {lista_mes[mes]} - {quantidade} cópias vendidas")
+    
+
+def exibir_dicionário_completo(dic_mangas):
+
+    for chaves in dic_mangas.keys():
+        print(f"\n***********************************************\n")
+        print(f"Informação sobre o mangá {chaves}")
+        print(f"Nome: {dic_mangas[chaves][0]}")
+        print(f"Autor(a): {dic_mangas[chaves][1]}")
+        print(f"Status: {dic_mangas[chaves][2]}")
+        print(f"Ano inicial de publicação: {dic_mangas[chaves][3]}")
+        print(f"Ano final de publicação: {dic_mangas[chaves][4]}")
+        print(f"Sinopse: {dic_mangas[chaves][5]}")
+        print(f"Número de volumes: {dic_mangas[chaves][6]}")
+        print(f"Público: {dic_mangas[chaves][7]}")        
+        print(f"Gênero(s): {', '.join(dic_mangas[chaves][8])}")        
+        print(f"Impressão do Tankobon: {dic_mangas[chaves][9]}")
+        print(f"Revista de publicação dos capítulos: {dic_mangas[chaves][10]}")
+        print(f"Vendas mensais:")
+        exibir_vendas(dic_mangas[chaves][11])
+        print(f"\n***********************************************\n")
+
+# ----------------------------------------------------------------------------#
+# --------------------------------BUSCAR MANGÁ--------------------------------#
+# ----------------------------------------------------------------------------#
+def buscar_manga(dic_mangas, chave):
+
+    if chave in dic_mangas.keys():
+        print(f"Mangá encontrado.")
+        print(dic_mangas[chave])
+
+    print(f"O mangá com o ID: {chave}, não foi encontrado.")
 
 n = 1
-dic_mangas = {}
+lista_mangas = ler_arquivo()
+dic_mangas = construir_dicionario(lista_mangas)
+'''print(construir_dicionario)
 for i in range(n):
     adicionar_manga(dic_mangas)
-print(dic_mangas)
+print(dic_mangas)'''
+
+chave = 'TESTE3'
+#buscar_manga(dic_mangas, chave)
+exibir_dicionário_completo(dic_mangas)
