@@ -30,6 +30,7 @@ AZUL = '\u001b[34m'
 MAGENTA = '\u001b[35m'
 CIANO = '\u001b[36m'
 BRANCO = '\u001b[37m'
+CORR = '\u001b[40m'
 RESET = '\u001b[0m'
 NEGRITO = '\u001b[1m'
 SUBLINHADO = '\u001b[4m'
@@ -335,23 +336,26 @@ def exibir_dicionário_completo(dic_mangas):
     cor_tit = AMARELO
     cor_inf = RESET
     cor_neko = CIANO
+    cor_txt = CIANO
     #texto = colored('Hello and Welcome to FINXTER!', attrs=['bold'])  # bold-text
     #print(texto)
     
 
     print(f"\n\n\n{cor_neko}")
-    print("⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢐")
-    print("⡫  O⠀ acervo  ⡫⠀⠀       ⣰⣷⣦")
-    print("⡫             ⡫        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
-    print("⡫ está abaixo ⡫     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
-    print("⡫             ⡫    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
-    print("⡫    \   /    ⡫  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
-    print("⡫     \ /     ⡫  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
-    print("⡫      Y      ⡫⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
-    print("⡫             ⡫ ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
-    print(f"⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢐   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
+    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}")
+    print(f"{cor_txt}⡫             ⡫{RESET}")
+    print(f"{cor_txt}⡫  O⠀ acervo  ⡫{RESET}⠀⠀        ⣰⣷⣦")
+    print(f"{cor_txt}⡫             ⡫{RESET}        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
+    print(f"{cor_txt}⡫ está abaixo ⡫{RESET}     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print(f"{cor_txt}⡫             ⡫{RESET}    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print(f"{cor_txt}⡫    \   /    ⡫{RESET}  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
+    print(f"{cor_txt}⡫     \ /     ⡫{RESET}  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
+    print(f"{cor_txt}⡫      Y      ⡫{RESET}⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
+    print(f"{cor_txt}⡫             ⡫{RESET} ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
+    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
 
     for chave in dic_mangas.keys():
+
         exibir_valores_dicionário(chave,
                                   dic_mangas[chave][0], dic_mangas[chave][1],
                                   dic_mangas[chave][2], dic_mangas[chave][3],
@@ -361,27 +365,50 @@ def exibir_dicionário_completo(dic_mangas):
                                   dic_mangas[chave][10], dic_mangas[chave][11],
                                   cor_sep, cor_tit, cor_inf)
         
-    print(f"\n\n{cor_neko}")
-    print("⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕")
-    print("⡫             ⡫")
-    print("⡫  O⠀ acervo  ⡫⠀⠀       ⠀ ⠀⠀⢠⣿⣶⣄⣀⡀                     ")
-    print("⡫             ⡫           ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇      ")
-    print("⡫ está acima  ⡫     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇      ")
-    print("⡫             ⡫       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇      ")
-    print("⡫      ^      ⡫   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄    ")
-    print("⡫     / \     ⡫   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧   ")
-    print("⡫    /   \    ⡫⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷  ")
-    print("⡫             ⡫")
-    print(f"⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
+    print(f"\n\n")
+    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}")
+    print(f"{cor_txt}⡫             ⡫{RESET}")
+    print(f"{cor_txt}⡫  O⠀ acervo  ⡫{RESET}⠀⠀       ⠀ ⠀⢠⣿⣶⣄⣀⡀")
+    print(f"{cor_txt}⡫             ⡫{RESET}          ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇")
+    print(f"{cor_txt}⡫ está  acima ⡫{RESET}     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇")
+    print(f"{cor_txt}⡫             ⡫{RESET}       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇")
+    print(f"{cor_txt}⡫      ^      ⡫{RESET}   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄")
+    print(f"{cor_txt}⡫     / \     ⡫{RESET}   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧")
+    print(f"{cor_txt}⡫    /   \    ⡫{RESET}⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷")
+    print(f"{cor_txt}⡫             ⡫{RESET}")
+    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
 
 # ----------------------------------------------------------------------------#
 # --------------------------------BUSCAR MANGÁ--------------------------------#
 # ----------------------------------------------------------------------------#
-def buscar_manga(dic_mangas, chave):
+def buscar_manga(dic_mangas):
+    
+    cor_txt = CIANO
+
+    print(f"\n\n\n")
+    print("⣿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣿⠛⠉⣉⣀⣀⣈⠉⠻⠿⣿⣿⡿⠿⠿⠿⠿⣿⣿⣿")
+    print("⣿⠛⠁⣠⣤⣤⣤⣄⠈⠋⠁⠠⣾⡿⠛⠛⣿⣿⡄⠄⠄⠄⠠⣴⣶⣦⣤⡀⠙⢿")
+    print("⠃⢰⣿⠿⠛⠛⢿⣿⡇⠄⠄⠄⠄⠄⠄⢀⣾⡿⠁⠄⠂⠂⠄⠘⠉⠙⠻⣿⣦⠈")
+    print("⣦⣤⣀⣀⠈⢠⣿⡿⠁⠄⠄⠄⠄⠄⢸⣿⡏⠄⠄⠄⠄⠄⠄⠁⣠⣴⣾⣿⠏⢠")
+    print("⣿⣿⣿⣿⠄⠿⠟⠄⠄⠄⠄⠄⠄⠄⣠⣤⡄⠄⠄⠄⠄⠄⢀⣈⠛⠋⠉⠄⢠⣾")
+    print("⣿⣿⣿⡏⠄⢰⣿⣶⠄⠄⠄⠄⠄⠄⠙⠿⠃⠄⠄⠄⠄⠄⠿⣿⡇⠄⠄⠄⠄⣿")
+    print("⣿⣿⣿⠄⠄⡈⠉⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣿")
+    print(f"⣿⣿⣷⠄⠄⢉⠄⠄⠄⠄⠄⠐⠦⡘⠿⠿⣿⡿⣧⣀⠄⠄⠄⠄⠄⠄⠄⠄⢀⣿     {cor_txt}-----------{RESET}" )
+    print(f"⣿⣿⡟⠈⠄⠄⠄⠄⢰⣄⠄⠠⠄⠄⠄⢀⡌⠁⠄⠄⠄⣹⠟⡁⠄⠄⠄⠄⣸⣿   {cor_txt}/  Digite    |{RESET}" )
+    print(f"⣿⣿⠇⠄⠄⠄⠄⠄⢸⣿⣿⣷⣦⡤⣾⣿⣷⢄⣀⣀⣠⣶⣿⠁⠄⠄⠄⢠⣿⣿  {cor_txt}/ abaixo o ID |{RESET}" ) 
+    print(f"⣿⣿⣤⣶⠄⠄⠄⠄⢸⣿⣿⣿⣿⣿⠻⢿⠿⢻⣿⣿⣿⣿⡍⠄⠄⠄⣴⣿⣿⣿ {cor_txt}<   do mangá   |{RESET}" )
+    print(f"⣿⣿⣿⣿⠄⠄⠄⠄⠘⣿⣿⡟⠄⠄⠄⠄⠄⠉⠛⠻⣿⣿⠁⠄⠄⢸⣿⣿⣿⣿  {cor_txt}\ que deseja  |{RESET}" )
+    print(f"⣿⣿⣯⣉⣀⠄⠄⠄⠄⢿⣿⣆⣼⣿⠲⠲⠶⢦⣄⡀⠻⡏⠄⠄⠰⣼⣿⣿⣿⣿   {cor_txt}\   buscar   |{RESET}" )
+    print(f"⣿⣿⣿⣿⣿⡄⠠⠄⠄⠄⠻⢝⠿⣿⣿⣿⣷⣶⠟⢃⡄⠁⠄⠄⠸⣾⡿⣿⣿⣿     {cor_txt}-----------{RESET}" )
+    print(f"⡿⠟⠛⠉⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠉⠁⠚⠋⠁⠄⠄⠄⠄⠒⠿⣿⣿⣿\n")
+    
+    chave = input(f"{cor_txt}{NEGRITO}--------> ID:{RESET} ")
+    print("\n")
 
     if chave in dic_mangas.keys():
-        cor_sep = CIANO
-        cor_tit = CIANO
+
+        cor_sep = AMARELO
+        cor_tit = AMARELO
         cor_inf = RESET
         exibir_valores_dicionário(chave,
                                   dic_mangas[chave][0], dic_mangas[chave][1],
@@ -391,18 +418,20 @@ def buscar_manga(dic_mangas, chave):
                                   dic_mangas[chave][8], dic_mangas[chave][9],
                                   dic_mangas[chave][10], dic_mangas[chave][11],
                                   cor_sep, cor_tit, cor_inf)
+        print("\n\n\n")
         
     else:
-        print( "\n\n" )
-        print( "    ,.  ,.                       (｡╯︵╰｡)" )
-        print( "    ||  ||           -----------------------------------" )
-        print( "   ,''--''.        /                                    |" )
-        print( "  : (.)(.) :      /  O mangá com o ID:                  |" )
-        print(f" ,'   ︵   `.   <    {chave}" )
-        print( " :          :     \  NÃO foi encontrado.                |" )
-        print( " :          :      \                                    |" )
-        print( " `._m____m_,'        -----------------------------------" )
-        print( "\n\n" )
+        cor_txt = VERMELHO
+        print(f"\n\n" )
+        print(f"    ,.  ,.                       {cor_txt}(｡╯︵╰｡){RESET}" )
+        print(f"    ||  ||           {cor_txt}-----------------------------------{RESET}" )
+        print(f"   ,''--''.        {cor_txt}/                                    |{RESET}" )
+        print(f"  : (.)(.) :      {cor_txt}/  O mangá com o ID:                  |{RESET}" )
+        print(f" ,'   ︵   `.   {cor_txt}<    {chave}{RESET}" )
+        print(f" :          :     {cor_txt}\  NÃO foi encontrado.                |{RESET}" )
+        print(f" :          :      {cor_txt}\                                    |{RESET}" )
+        print(f" `._m____m_,'        {cor_txt}-----------------------------------{RESET}" )
+        print(f"\n\n{RESET}" )
 
 n = 1
 lista_mangas = ler_arquivo()
@@ -412,7 +441,6 @@ for i in range(n):
     adicionar_manga(dic_mangas)
 print(dic_mangas)'''
 
-chave = 'TESTE5'
-buscar_manga(dic_mangas, chave)
+buscar_manga(dic_mangas)
 exibir_dicionário_completo(dic_mangas)
 
