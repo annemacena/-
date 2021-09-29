@@ -266,10 +266,6 @@ def adicionar_manga(dic_mangas):
     print(f"Cadastro efetuado com sucesso.")
 
 
-
-
-
-
 # ----------------------------------------------------------------------------#
 # -----------------------------PRINTAR DICIONÁRIO-----------------------------#
 # ----------------------------------------------------------------------------#
@@ -342,17 +338,17 @@ def exibir_dicionário_completo(dic_mangas):
     
 
     print(f"\n\n\n{cor_neko}")
-    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}")
-    print(f"{cor_txt}⡫             ⡫{RESET}")
-    print(f"{cor_txt}⡫  O⠀ acervo  ⡫{RESET}⠀⠀        ⣰⣷⣦")
-    print(f"{cor_txt}⡫             ⡫{RESET}        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
-    print(f"{cor_txt}⡫ está abaixo ⡫{RESET}     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
-    print(f"{cor_txt}⡫             ⡫{RESET}    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
-    print(f"{cor_txt}⡫    \   /    ⡫{RESET}  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
-    print(f"{cor_txt}⡫     \ /     ⡫{RESET}  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
-    print(f"{cor_txt}⡫      Y      ⡫{RESET}⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
-    print(f"{cor_txt}⡫             ⡫{RESET} ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
-    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
+    print(f"\u001b[36m⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}")
+    print(f"\u001b[36m⡫             ⡫{RESET}")
+    print(f"\u001b[36m⡫  O⠀ acervo  ⡫{RESET}⠀⠀        ⣰⣷⣦")
+    print(f"\u001b[36m⡫             ⡫{RESET}        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
+    print(f"\u001b[36m⡫ está abaixo ⡫{RESET}     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print(f"\u001b[36m⡫             ⡫{RESET}    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print(f"\u001b[36m⡫    \   /    ⡫{RESET}  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
+    print(f"\u001b[36m⡫     \ /     ⡫{RESET}  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
+    print(f"\u001b[36m⡫      Y      ⡫{RESET}⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
+    print(f"\u001b[36m⡫             ⡫{RESET} ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
+    print(f"\u001b[36m⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
 
     for chave in dic_mangas.keys():
 
@@ -366,17 +362,17 @@ def exibir_dicionário_completo(dic_mangas):
                                   cor_sep, cor_tit, cor_inf)
         
     print(f"\n\n")
-    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}")
-    print(f"{cor_txt}⡫             ⡫{RESET}")
-    print(f"{cor_txt}⡫  O⠀ acervo  ⡫{RESET}⠀⠀       ⠀ ⠀⢠⣿⣶⣄⣀⡀")
-    print(f"{cor_txt}⡫             ⡫{RESET}          ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇")
-    print(f"{cor_txt}⡫ está  acima ⡫{RESET}     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇")
-    print(f"{cor_txt}⡫             ⡫{RESET}       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇")
-    print(f"{cor_txt}⡫      ^      ⡫{RESET}   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄")
-    print(f"{cor_txt}⡫     / \     ⡫{RESET}   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧")
-    print(f"{cor_txt}⡫    /   \    ⡫{RESET}⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷")
-    print(f"{cor_txt}⡫             ⡫{RESET}")
-    print(f"{cor_txt}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
+    print(f"\u001b[36m⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}")
+    print(f"\u001b[36m⡫             ⡫{RESET}")
+    print(f"\u001b[36m⡫  O⠀ acervo  ⡫{RESET}⠀⠀       ⠀ ⠀⢠⣿⣶⣄⣀⡀")
+    print(f"\u001b[36m⡫             ⡫{RESET}          ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇")
+    print(f"\u001b[36m⡫ está  acima ⡫{RESET}     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇")
+    print(f"\u001b[36m⡫             ⡫{RESET}       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇")
+    print(f"\u001b[36m⡫      ^      ⡫{RESET}   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄")
+    print(f"\u001b[36m⡫     / \     ⡫{RESET}   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧")
+    print(f"\u001b[36m⡫    /   \    ⡫{RESET}⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷")
+    print(f"\u001b[36m⡫             ⡫{RESET}")
+    print(f"\u001b[36m⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
 
 # ----------------------------------------------------------------------------#
 # --------------------------------BUSCAR MANGÁ--------------------------------#
@@ -393,16 +389,16 @@ def buscar_manga(dic_mangas):
     print("⣿⣿⣿⣿⠄⠿⠟⠄⠄⠄⠄⠄⠄⠄⣠⣤⡄⠄⠄⠄⠄⠄⢀⣈⠛⠋⠉⠄⢠⣾")
     print("⣿⣿⣿⡏⠄⢰⣿⣶⠄⠄⠄⠄⠄⠄⠙⠿⠃⠄⠄⠄⠄⠄⠿⣿⡇⠄⠄⠄⠄⣿")
     print("⣿⣿⣿⠄⠄⡈⠉⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣿")
-    print(f"⣿⣿⣷⠄⠄⢉⠄⠄⠄⠄⠄⠐⠦⡘⠿⠿⣿⡿⣧⣀⠄⠄⠄⠄⠄⠄⠄⠄⢀⣿     {cor_txt}-----------{RESET}" )
-    print(f"⣿⣿⡟⠈⠄⠄⠄⠄⢰⣄⠄⠠⠄⠄⠄⢀⡌⠁⠄⠄⠄⣹⠟⡁⠄⠄⠄⠄⣸⣿   {cor_txt}/  Digite    |{RESET}" )
-    print(f"⣿⣿⠇⠄⠄⠄⠄⠄⢸⣿⣿⣷⣦⡤⣾⣿⣷⢄⣀⣀⣠⣶⣿⠁⠄⠄⠄⢠⣿⣿  {cor_txt}/ abaixo o ID |{RESET}" ) 
-    print(f"⣿⣿⣤⣶⠄⠄⠄⠄⢸⣿⣿⣿⣿⣿⠻⢿⠿⢻⣿⣿⣿⣿⡍⠄⠄⠄⣴⣿⣿⣿ {cor_txt}<   do mangá   |{RESET}" )
-    print(f"⣿⣿⣿⣿⠄⠄⠄⠄⠘⣿⣿⡟⠄⠄⠄⠄⠄⠉⠛⠻⣿⣿⠁⠄⠄⢸⣿⣿⣿⣿  {cor_txt}\ que deseja  |{RESET}" )
-    print(f"⣿⣿⣯⣉⣀⠄⠄⠄⠄⢿⣿⣆⣼⣿⠲⠲⠶⢦⣄⡀⠻⡏⠄⠄⠰⣼⣿⣿⣿⣿   {cor_txt}\   buscar   |{RESET}" )
-    print(f"⣿⣿⣿⣿⣿⡄⠠⠄⠄⠄⠻⢝⠿⣿⣿⣿⣷⣶⠟⢃⡄⠁⠄⠄⠸⣾⡿⣿⣿⣿     {cor_txt}-----------{RESET}" )
+    print(f"⣿⣿⣷⠄⠄⢉⠄⠄⠄⠄⠄⠐⠦⡘⠿⠿⣿⡿⣧⣀⠄⠄⠄⠄⠄⠄⠄⠄⢀⣿     \u001b[36m-----------{RESET}" )
+    print(f"⣿⣿⡟⠈⠄⠄⠄⠄⢰⣄⠄⠠⠄⠄⠄⢀⡌⠁⠄⠄⠄⣹⠟⡁⠄⠄⠄⠄⣸⣿   \u001b[36m/  Digite    |{RESET}" )
+    print(f"⣿⣿⠇⠄⠄⠄⠄⠄⢸⣿⣿⣷⣦⡤⣾⣿⣷⢄⣀⣀⣠⣶⣿⠁⠄⠄⠄⢠⣿⣿  \u001b[36m/ abaixo o ID |{RESET}" ) 
+    print(f"⣿⣿⣤⣶⠄⠄⠄⠄⢸⣿⣿⣿⣿⣿⠻⢿⠿⢻⣿⣿⣿⣿⡍⠄⠄⠄⣴⣿⣿⣿ \u001b[36m<   do mangá   |{RESET}" )
+    print(f"⣿⣿⣿⣿⠄⠄⠄⠄⠘⣿⣿⡟⠄⠄⠄⠄⠄⠉⠛⠻⣿⣿⠁⠄⠄⢸⣿⣿⣿⣿  \u001b[36m\ que deseja  |{RESET}" )
+    print(f"⣿⣿⣯⣉⣀⠄⠄⠄⠄⢿⣿⣆⣼⣿⠲⠲⠶⢦⣄⡀⠻⡏⠄⠄⠰⣼⣿⣿⣿⣿   \u001b[36m\   buscar   |{RESET}" )
+    print(f"⣿⣿⣿⣿⣿⡄⠠⠄⠄⠄⠻⢝⠿⣿⣿⣿⣷⣶⠟⢃⡄⠁⠄⠄⠸⣾⡿⣿⣿⣿     \u001b[36m-----------{RESET}" )
     print(f"⡿⠟⠛⠉⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠉⠁⠚⠋⠁⠄⠄⠄⠄⠒⠿⣿⣿⣿\n")
     
-    chave = input(f"{cor_txt}{NEGRITO}--------> ID:{RESET} ")
+    chave = input(f"\u001b[36m{NEGRITO}--------> ID:{RESET} ")
     print("\n")
 
     if chave in dic_mangas.keys():
@@ -423,14 +419,14 @@ def buscar_manga(dic_mangas):
     else:
         cor_txt = VERMELHO
         print(f"\n\n" )
-        print(f"    ,.  ,.                       {cor_txt}(｡╯︵╰｡){RESET}" )
-        print(f"    ||  ||           {cor_txt}-----------------------------------{RESET}" )
-        print(f"   ,''--''.        {cor_txt}/                                    |{RESET}" )
-        print(f"  : (.)(.) :      {cor_txt}/  O mangá com o ID:                  |{RESET}" )
-        print(f" ,'   ︵   `.   {cor_txt}<    {chave}{RESET}" )
-        print(f" :          :     {cor_txt}\  NÃO foi encontrado.                |{RESET}" )
-        print(f" :          :      {cor_txt}\                                    |{RESET}" )
-        print(f" `._m____m_,'        {cor_txt}-----------------------------------{RESET}" )
+        print(f"    ,.  ,.                       \u001b[36m(｡╯︵╰｡){RESET}" )
+        print(f"    ||  ||           \u001b[36m-----------------------------------{RESET}" )
+        print(f"   ,''--''.        \u001b[36m/                                    |{RESET}" )
+        print(f"  : (.)(.) :      \u001b[36m/  O mangá com o ID:                  |{RESET}" )
+        print(f" ,'   ︵   `.   \u001b[36m<    {chave}{RESET}" )
+        print(f" :          :     \u001b[36m\  NÃO foi encontrado.                |{RESET}" )
+        print(f" :          :      \u001b[36m\                                    |{RESET}" )
+        print(f" `._m____m_,'        \u001b[36m-----------------------------------{RESET}" )
         print(f"\n\n{RESET}" )
 
 n = 1
