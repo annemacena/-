@@ -75,9 +75,12 @@ def construir_dicionario(lista_registros):
         cont = 0
 
         # convertendo valores do tipo inteiro (ver https://github.com/annemacena/mangarisuto#rela%C3%A7%C3%A3o-atributo-x-%C3%ADndice) 
-        atributos_manga[3] = int(atributos_manga[3])
-        atributos_manga[4] = int(atributos_manga[4])
-        atributos_manga[6] = int(atributos_manga[6])
+        if(isinstance(atributos_manga[3], int)):
+            atributos_manga[3] = int(atributos_manga[3])
+        if(isinstance(atributos_manga[4], int)):
+            atributos_manga[4] = int(atributos_manga[4])
+        if(isinstance(atributos_manga[6], int)):
+            atributos_manga[6] = int(atributos_manga[6])
 
         dicionario[id_manga] = atributos_manga
 
@@ -206,7 +209,7 @@ def adicionar_ano_inicio():
         ano_inicio = int(input(("Entre com o ano que o mangá começou a ser publicado: ")))
         flag_ano_inicio_valido = checar_ano_inicio(ano_inicio)
         
-    return str(ano_inicio)
+    return ano_inicio
 
 
 # ----------------------------------------------------------------------------#
@@ -235,7 +238,7 @@ def adicionar_ano_fim(status, ano_inicio):
         ano_fim = int(input(("Entre com o ano que o mangá terminou de ser publicado: ")))
         flag_ano_fim_valido = checar_ano_fim(ano_fim, ano_inicio)
         
-    return str(ano_fim)
+    return ano_fim
 
 
 # ----------------------------------------------------------------------------#
@@ -258,7 +261,7 @@ def adicionar_num_volumes():
         num_de_volumes = int(input(("Entre com a quantidade de volumes que o mangá possui: ")))
         flag_num_volumes_valido = checar_num_volumes(num_de_volumes)
         
-    return str(num_de_volumes)
+    return num_de_volumes
 
 
 # ----------------------------------------------------------------------------#
@@ -329,7 +332,7 @@ def adicionar_vendas_mensais(venda_mensal, ano_inicio):
         if continua == "n":
             flag_cadastrar_venda = False
             
-        venda_mensal.append([str(ano_venda), str(mes_venda), str(quantidade)])
+        venda_mensal.append([ano_venda, mes_venda, quantidade])
         
     venda_mensal.sort()
 
@@ -378,7 +381,7 @@ def exibir_vendas(venda_mensal, cor_tit, cor_inf):
 # ----------------------------------------------------------------------------#
 
 def imprimir_bem_vindo():
-    print(f"      ⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷")
+    print(f"\n      ⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷")
     print(f"      ⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇")
     print(f"      ⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽")
     print(f"      ⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕")
@@ -394,7 +397,7 @@ def imprimir_bem_vindo():
     print(f"      ⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣")
     print(f"      ⡆⠉⠉⠉⠉⠉⠉ マンガリスト。⠉⠉⠉⠉⠉⠉⠉⠙")
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
-    print(f"      \n Seja bem-vinde ao MangaList!\n")
+    print(f"\n      Seja bem-vinde ao MangaList!\n")
 
 def imprimir_menu():
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")

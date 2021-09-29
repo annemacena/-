@@ -1,6 +1,6 @@
 from globais import EMOJI_OPCAO
 from helper import construir_dicionario, imprimir_bem_vindo, imprimir_menu
-from funcionalidade import exibir_dicionário_completo, buscar_manga, atualizar_manga, deletar_manga
+from funcionalidade import adicionar_manga, exibir_dicionário_completo, buscar_manga, atualizar_manga, deletar_manga
 from arquivo import ler_arquivo
 
 dic_mangas = construir_dicionario(ler_arquivo())
@@ -17,7 +17,7 @@ def main():
         if(opcao != "10"): 
 
             if(opcao == "1"): # adicionar um mangá
-                atualizar_manga(dic_mangas)
+                adicionar_manga(dic_mangas)
 
             elif(opcao == "2"): # visualizar todos os mangás
                 exibir_dicionário_completo(dic_mangas)
@@ -40,13 +40,13 @@ def main():
             elif(opcao == "9"): # visualizar gráfico 1
                 print("\n-\n")
             else:
-                print("\nOpção inválida.\n")
+                print("\n  Opção inválida (╯°益°)╯彡┻━┻\n")
 
         else:
-            print("\nSaindo...")
+            print("\n  。。。ミヽ(。＞＜)ノ Saindo...")
 
 
-    print("\nbyebye")
+    print("\n  byebye (｡•́︿•̀｡)")
 
 
 main()
