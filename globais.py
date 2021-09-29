@@ -1,7 +1,8 @@
 NOME_ARQUIVO = "risuto.txt"
 NOME_ARQUIVO_BACKUP = "risuto_backup.txt"
 LISTA_MESES = ('','Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro')
-EMOJI_OPCAO = "\n  (∩^o^)⊃━☆ﾟ.*･｡ﾟ "
+#EMOJI_OPCAO = "\n  (∩^o^)⊃━☆ﾟ.*･｡ﾟ "
+EMOJI_OPCAO = "∩༼˵☯‿☯˵༽つ¤=[]:::::> "
 
 """
     PRETO = '\u001b[30m',

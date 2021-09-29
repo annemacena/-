@@ -1,6 +1,9 @@
 from globais import EMOJI_OPCAO
-from helper import adicionar_id, obter_atributos_manga, imprimir_busca_manga, imprimir_msg_nao_encontrado, exibir_valores_dicionario
 from arquivo import atualizar_arquivo
+from helper import adicionar_id, obter_atributos_manga, exibir_valores_dicionario
+from helper import imprimir_busca_manga, imprimir_msg_nao_encontrado
+from helper import plotar_grafico_venda_anual, plotar_grafico_venda_total, plot_grafico_genero, plot_grafico_publico
+
 
 AMARELO = '\u001b[33m'
 CIANO = '\u001b[36m'
@@ -11,12 +14,7 @@ def adicionar_manga(dic_mangas):
 
     id = adicionar_id(dic_mangas)
     dic_mangas[id] = obter_atributos_manga()
-    #print(dic_mangas)
-    
-    '''id = 'MNG_OP'
-    dic_mangas[id] = ['Op', 'Oda', 'Andamento', '2016', 'None', 'Pirata', '110', 'Shonen', ['Ação'], 'Jump', 'Comics', [['2020', '2', '10']]]
-    print(dic_mangas)'''
-    
+
     atualizar_arquivo(dic_mangas)
     print(f"Cadastro efetuado com sucesso.")
 
@@ -27,20 +25,19 @@ def exibir_dicionário_completo(dic_mangas):
     cor_tit = AMARELO
     cor_inf = RESET
     cor_neko = CIANO
-    cor_txt = CIANO
 
     print(f"\n\n\n{cor_neko}")
-    print(f"{CIANO}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}")
-    print(f"{CIANO}⡫             ⡫{RESET}")
-    print(f"{CIANO}⡫  O⠀ acervo  ⡫{RESET}⠀⠀        ⣰⣷⣦")
-    print(f"{CIANO}⡫             ⡫{RESET}        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
-    print(f"{CIANO}⡫ está abaixo ⡫{RESET}     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
-    print(f"{CIANO}⡫             ⡫{RESET}    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
-    print(f"{CIANO}⡫    \   /    ⡫{RESET}  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
-    print(f"{CIANO}⡫     \ /     ⡫{RESET}  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
-    print(f"{CIANO}⡫      Y      ⡫{RESET}⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
-    print(f"{CIANO}⡫             ⡫{RESET} ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
-    print(f"{CIANO}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
+    print(f"{cor_neko}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}")
+    print(f"{cor_neko}⡫             ⡫{RESET}")
+    print(f"{cor_neko}⡫  O⠀ acervo  ⡫{RESET}⠀⠀        ⣰⣷⣦")
+    print(f"{cor_neko}⡫             ⡫{RESET}        ⣀⣶⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣦⣀⡀⠀⢀⣴⣇")
+    print(f"{cor_neko}⡫ está abaixo ⡫{RESET}     ⠀⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print(f"{cor_neko}⡫             ⡫{RESET}    ⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+    print(f"{cor_neko}⡫    \   /    ⡫{RESET}  ⠀⠀⣴⣿⣿⣿⣿⠛⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣄")
+    print(f"{cor_neko}⡫     \ /     ⡫{RESET}  ⠀⣾⣿⣿⣿⣿⣿⣶⣿⣯⣭⣬⣉⣽⣿⣿⣄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀")
+    print(f"{cor_neko}⡫      Y      ⡫{RESET}⠀ ⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄")
+    print(f"{cor_neko}⡫             ⡫{RESET} ⢸⣿⣿⣿⣿⠟⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⣿⣿⣿⣿⡿⠛⠉⠉⠉⠉⠁")
+    print(f"{cor_neko}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⡫{RESET}   ⠘⠛⠛⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠛⠛⠃{RESET}\n\n")
 
     for id in dic_mangas.keys():
 
@@ -54,17 +51,17 @@ def exibir_dicionário_completo(dic_mangas):
                                   cor_sep, cor_tit, cor_inf)
         
     print(f"\n\n")
-    print(f"{CIANO}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}")
-    print(f"{CIANO}⡫             ⡫{RESET}")
-    print(f"{CIANO}⡫  O⠀ acervo  ⡫{RESET}⠀⠀       ⠀ ⠀⢠⣿⣶⣄⣀⡀")
-    print(f"{CIANO}⡫             ⡫{RESET}          ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇")
-    print(f"{CIANO}⡫ está  acima ⡫{RESET}     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇")
-    print(f"{CIANO}⡫             ⡫{RESET}       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇")
-    print(f"{CIANO}⡫      ^      ⡫{RESET}   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄")
-    print(f"{CIANO}⡫     / \     ⡫{RESET}   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧")
-    print(f"{CIANO}⡫    /   \    ⡫{RESET}⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷")
-    print(f"{CIANO}⡫             ⡫{RESET}")
-    print(f"{CIANO}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
+    print(f"{cor_neko}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}")
+    print(f"{cor_neko}⡫             ⡫{RESET}")
+    print(f"{cor_neko}⡫  O⠀ acervo  ⡫{RESET}⠀⠀       ⠀ ⠀⢠⣿⣶⣄⣀⡀")
+    print(f"{cor_neko}⡫             ⡫{RESET}          ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⣀⡀⣠⣾⡇")
+    print(f"{cor_neko}⡫ está  acima ⡫{RESET}     ⠀ ⠀ ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇")
+    print(f"{cor_neko}⡫             ⡫{RESET}       ⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⢿⣿⣿⡇")
+    print(f"{cor_neko}⡫      ^      ⡫{RESET}   ⣶⣿⣦⣜⣿⣿⣿⡟⠻⣿⣿⣿⣿⣿⣿⣿⡿⢿⡏⣴⣺⣦⣙⣿⣷⣄")
+    print(f"{cor_neko}⡫     / \     ⡫{RESET}   ⣯⡇⣻⣿⣿⣿⣿⣷⣾⣿⣬⣥⣭⣽⣿⣿⣧⣼⡇⣯⣇⣹⣿⣿⣿⣿⣧")
+    print(f"{cor_neko}⡫    /   \    ⡫{RESET}⠀  ⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⣿⣿⣿⣷")
+    print(f"{cor_neko}⡫             ⡫{RESET}")
+    print(f"{cor_neko}⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⢕{RESET}\n\n\n")
 
 def buscar_manga(dic_mangas):
     
@@ -117,3 +114,59 @@ def deletar_manga(dic_mangas):
 
     dic_mangas.pop(id)
     atualizar_arquivo(dic_mangas)
+
+def visualizar_grafico_vendas_anuais(dic_mangas):
+    
+    id = input("Digite o ID do mangá que deseja ver a venda anual: ")
+    
+    if id in dic_mangas.keys():
+        ano_venda = int(input("Digite o ano que você deseja ver a venda: "))
+        
+        nome = dic_mangas[id][0]
+        lista_venda = dic_mangas[id][11]        
+
+        plotar_grafico_venda_anual(lista_venda, ano_venda, nome)
+    else:
+        print("Infelizmente, o ID que você inseriu não está cadastrado.")
+    
+
+def visualizar_grafico_vendas_totais(dic_mangas):
+    
+    id = input("Digite o ID do mangá que deseja ver a venda ao longo dos anos: ")
+    print("\n\n")
+    
+    if id in dic_mangas.keys():
+        
+        nome = dic_mangas[id][0]
+        lista_venda = dic_mangas[id][11]
+        
+        plotar_grafico_venda_total(lista_venda, nome)
+
+    else:
+        print("Infelizmente, o ID que você inseriu não está cadastrado.\n\n\n")    
+    
+
+def visualizar_grafico_genero(dic_mangas):
+    
+
+    if len(dic_mangas.keys()) > 0:
+        
+        plot_grafico_genero(dic_mangas)
+
+    else:
+        
+        print("Infelizmente, não existe nennhum mangá cadastrado.\n\n\n")  
+
+
+def visualizar_grafico_publico(dic_mangas):
+
+    if len(dic_mangas.keys()) > 0:
+        
+        plot_grafico_publico(dic_mangas)
+
+    else:
+        
+        print("Infelizmente, não existe nennhum mangá cadastrado.\n\n\n")  
+    
+    
+    

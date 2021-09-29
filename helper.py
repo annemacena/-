@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 from globais import LISTA_MESES
 
 AMARELO = '\u001b[33m'
@@ -172,9 +173,9 @@ def adicionar_id(dic_mangas):
 # checa se o status recebido é válido: Completo ou Andamento ou Cancelado ou Hiato
 def checar_status(status):
 
-    if status == "Completo" or status == "Andamento" or status == "Cancelado" or status == "Hiato":
+    if status == "COMPLETO" or status == "ANDAMENTO" or status == "CANCELADO" or status == "HIATO":
         return True
-    
+
     print(f"Status incorreto, por favor insira um status válido.")   
     return False
 # ----------------------------------STATUS------------------------------------#
@@ -184,9 +185,9 @@ def adicionar_status():
     flag_status_valido = False
     while flag_status_valido == False:
         status = input(("Entre com o status do mangá - Completo ou Andamento ou Cancelado ou Hiato - : "))
-        flag_status_valido = checar_status(status)
+        flag_status_valido = checar_status(status.upper())
         
-    return status
+    return status.capitalize()
 
 
 # ----------------------------------------------------------------------------#
@@ -270,7 +271,7 @@ def adicionar_num_volumes():
 # checa se o publico recebido é válido: Shojo ou Josei ou Shonen ou Seinen
 def checar_publico(publico):
 
-    if publico == "Shojo" or publico == "Josei" or publico == "Shonen" or publico == "Seinen":
+    if publico == "SHOJO" or publico == "JOSEI" or publico == "SHONEN" or publico == "SEINEN":
         return True
     
     print(f"Publico incorreto, por favor insira o publico correto.")   
@@ -282,9 +283,9 @@ def adicionar_publico():
     flag_publico_valido = False
     while flag_publico_valido == False:
         publico = input(("Entre com o público alvo do mangá - Shojo ou Josei ou Shonen ou Seinen - : "))
-        flag_publico_valido = checar_publico(publico)
+        flag_publico_valido = checar_publico(publico.upper())
         
-    return publico
+    return publico.capitalize()
 
 
 # ----------------------------------------------------------------------------#
@@ -296,7 +297,7 @@ def adicionar_genero(genero):
     flag_adicionar_genero = True
     while flag_adicionar_genero == True:
         gen = input(("Entre com o genero do mangá: "))
-        genero.append(gen)
+        genero.append(gen.capitalize())
         
         continua = input(("Você deseja cadastrar um novo genero? s/n: "))
         if continua == "n":
@@ -352,6 +353,7 @@ def obter_atributos_manga():
     revista = input(("Entre com a revista de publicação do mangá: "))
     venda_mensal = []
     adicionar_vendas_mensais(venda_mensal, int(ano_inicio))
+    print("\n\n\n")
 
     return [nome, autor, status, ano_inicio, ano_fim, sinopse, num_de_volumes, publico, genero, impressao, revista, venda_mensal]
 
@@ -364,21 +366,146 @@ def exibir_ano_final(ano_final, status, cor_tit, cor_inf):
         print(f"{cor_tit}Ano final de publicação: {cor_inf}{ano_final}")
 
 def exibir_vendas(venda_mensal, cor_tit, cor_inf):
+    
 
     ano_atual = venda_mensal[0][0]
-    string1 = f"{cor_inf}Ano: {ano_atual}"
-
-    print(f"{string1}")
+    print(f"{cor_inf}Ano: {ano_atual}")
 
     for ano, mes, quantidade in venda_mensal:
         if ano != ano_atual:
             ano_atual = ano
-            print(f"{string1}")
+            print(f"{cor_inf}Ano: {ano_atual}")
 
         print(f"    {LISTA_MESES[mes]} - {quantidade} cópia", end = '')
-        print("s vendidas" if quantidade > 1 else " vendida")
+        print("s vendidas" if quantidade > 1 else " vendida")  
+        
+        
+# ----------------------------------------------------------------------------#
+
 
 # ----------------------------------------------------------------------------#
+# -------------------------------PLOTAR GRÁFICO-------------------------------#
+# ----------------------------------------------------------------------------#
+def plotar_grafico_venda_anual(lista_venda, ano_venda, nome):
+    
+    lista_venda.sort()
+    
+    x = []
+    y = []
+    for ano, mes, qtd in lista_venda:
+        if ano == ano_venda:
+            x.append(mes)
+            y.append(qtd)
+    
+    if not x == []:
+        plt.bar(x, y, width = 0.5, color = '#f59d45')
+        plt.title(f"Venda de {ano_venda} do mangá {nome}")
+        plt.ylabel("Quantidade de volumes vendidos")
+        plt.xlabel("Mês")
+        plt.xticks([tam + 1.0 for tam in range(12)], ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], rotation=90)
+        plt.show()
+    else:
+        print("\nNão existe nenhum registro de venda nesse ano.\n\n\n")
+# ----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
+def plotar_grafico_venda_total(lista_venda, nome):
+    
+    lista_venda.sort()
+    
+    ano_atual = lista_venda[0][0]
+    qtd_anual = 0
+    
+    x = []
+    y = []
+    flag_adc = True
+    for ano, mes, qtd in lista_venda:
+        if ano_atual == ano:
+            qtd_anual += qtd
+            flag_adc = True
+        else:
+            x.append(str(ano_atual))
+            y.append(qtd_anual)
+            ano_atual = ano
+            qtd_anual = qtd
+            flag_adc = False
+    
+    if flag_adc == True:
+        x.append(str(ano_atual))
+        y.append(qtd_anual)
+    
+    if len(x) == 1:
+        print ("Apenas um ano foi cadastrado. Aconselho plotar o gráfico de venda anual da opção 6.\n\n\n")
+    elif not x == []:
+        '''x.append(str(ano_atual))
+        y.append(qtd_anual)'''
+    
+        plt.plot(x, y, color = '#a80be0')
+        plt.title(f"Venda ao longo do tempo do mangá {nome}")
+        plt.ylabel("Quantidade de volumes vendidos")
+        plt.xlabel("Ano")
+        plt.show()
+    else:
+        print("\nNão existe nenhum registro de venda para esse mangá.\n\n\n")
+# ----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
+def plot_grafico_genero(dic_mangas):
+    
+    lista_generos = [dic_mangas[chave][8] for chave in dic_mangas]
+    
+    generos = []
+    for linha in lista_generos:
+        for valor in linha:
+            generos.append(valor)
+   
+    dic_generos = {i:generos.count(i) for i in generos}
+    
+    x = []
+    y = []
+    for chave in dic_generos:
+        y.append(chave)
+        x.append(dic_generos[chave])
+    
+    fig = plt.figure()
+    ax1 = fig.add_axes([0,0,1,1])
+    ax1.barh(y, x, color = '#c42929')
+    ax1.set_title("Gênero x Quantidade")
+    ax1.set_ylabel("Gêneros")
+    ax1.set_xlabel("Quantidade")
+    ax1.set_xticks(x)
+    plt.show()
+# ----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
+def plot_grafico_publico(dic_mangas):
+    
+    lista_publico = [dic_mangas[chave][7] for chave in dic_mangas]
+    
+    qtd_shojo = lista_publico.count('Shojo')
+    qtd_josei = lista_publico.count('Josei')
+    qtd_shonen = lista_publico.count('Shonen')
+    qtd_seinen = lista_publico.count('Seinen')
+    
+    opcoes = ('Shojo', 'Josei', 'Shonen', 'Seinen')
+    qtd = (qtd_shojo, qtd_josei, qtd_shonen, qtd_seinen)
+    cores = ('hotpink', '#ffcc99', '#66b3ff', '#99ff99')
+    
+    fig1, ax1 = plt.subplots()
+    #explsion
+    explode = (0.05,0.05,0.05,0.05)
+    ax1.pie(qtd, colors = cores, labels = opcoes, autopct = '% 1.1f %%', startangle = 45,pctdistance=0.85, explode = explode)
+
+    circulo_do_meio = plt.Circle((0,0), 0.70, fc = 'white') 
+    fig = plt.gcf() 
+    fig.gca().add_artist(circulo_do_meio)
+    
+    ax1.axis('equal')  
+    plt.tight_layout()
+    plt.legend(title = "Público")
+    plt.show()
+    
+# ----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
+# ----------------------------------------------------------------------------#
+
 
 def imprimir_bem_vindo():
     print(f"\n      ⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷")
@@ -410,11 +537,15 @@ def imprimir_menu():
     print(f"      ⡀ 3.  Visualizar um mangá     ⠁")
     print(f"      ⡄ 4.  Editar um mangá         ⠼")
     print(f"      ⢱ 5.  Excluir um mangá        ⢗")
-    print(f"      ⡀ 6.  Visualizar gráfico 1    ⠁")
-    print(f"      ⡄ 7.  Visualizar gráfico 2    ⠼")
-    print(f"      ⢄ 8.  Visualizar gráfico 3    ⣈")
-    print(f"      ⡄ 9.  Visualizar gráfico 4    ⠼")
-    print(f"      ⡆ 10. Sair                    ⣌")
+    print(f"      ⡀ 6.  Gráfico de venda        ⠁")
+    print(f"      ⡄     anual de um mangá       ⠁")
+    print(f"      ⡄ 7.  Gráfico de vendas de um ⠼")
+    print(f"      ⡀     mangá ao longo dos anos ⠁")
+    print(f"      ⢄ 8.  Gráfico de proporção    ⣈")
+    print(f"      ⡀     dos gêneros cadastrados ⠁")
+    print(f"      ⢱ 9.  Gráfico de proporção    ⣈")
+    print(f"      ⡀     do público alvo         ⠁")
+    print(f"      ⣌ 10. Sair                    ⣌")
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
 
 def imprimir_busca_manga():
@@ -457,13 +588,13 @@ def exibir_valores_dicionario(id, nome, autor, status, ano_inicio, ano_fim,
     exibir_vendas(venda_mensal, cor_tit, cor_inf)
     print(f"\n{cor_sep}(¸.•´ (¸.•´ .•´ ¸.•´ .•´ ¸¸.•¨¯`•.•´¯¨•.¸¸ `•. `•.¸ `•. `•.¸) `•.¸){cor_inf}")
     
-def imprimir_msg_nao_encontrado(ID):
+def imprimir_msg_nao_encontrado(id):
         print(f"\n\n" )
         print(f"    ,.  ,.                       {VERMELHO}(｡╯︵╰｡){RESET}" )
         print(f"    ||  ||           {VERMELHO}-----------------------------------{RESET}" )
         print(f"   ,''--''.        {VERMELHO}/                                    |{RESET}" )
         print(f"  : (.)(.) :      {VERMELHO}/  O mangá com o ID:                  |{RESET}" )
-        print(f" ,'   ︵   `.   {VERMELHO}<    {NEGRITO}{ID}{RESET}" )
+        print(f" ,'   ︵   `.   {VERMELHO}<    {NEGRITO}{id}{RESET}" )
         print(f" :          :     {VERMELHO}\  NÃO foi encontrado.                |{RESET}" )
         print(f" :          :      {VERMELHO}\                                    |{RESET}" )
         print(f" `._m____m_,'        {VERMELHO}-----------------------------------{RESET}" )
