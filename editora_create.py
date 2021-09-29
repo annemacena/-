@@ -4,6 +4,7 @@ from main import adicionar_colchetes_string
 from main import transformar_dicionario_em_lista
 from main import ler_arquivo
 from main import atualizar_arquivo
+import matplotlib.pyplot as plt
 import os
 #from termcolor import colored
 """
@@ -429,14 +430,125 @@ def buscar_manga(dic_mangas):
         print(f" `._m____m_,'        \u001b[36m-----------------------------------{RESET}" )
         print(f"\n\n{RESET}" )
 
+
+
+# ----------------------------------------------------------------------------#
+# ------------------------------------PLOT------------------------------------#
+# ----------------------------------------------------------------------------#
+def plot_grafico_publico(dic_mangas):
+    
+    lista_publico = [dic_mangas[chave][7] for chave in dic_mangas]
+    
+    qtd_shojo = lista_publico.count('Shojo')
+    qtd_josei = lista_publico.count('Josei')
+    qtd_shonen = lista_publico.count('Shonen')
+    qtd_seinen = lista_publico.count('Seinen')
+    
+    opcoes = ('Shojo', 'Josei', 'Shonen', 'Seinen')
+    qtd = (qtd_shojo, qtd_josei, qtd_shonen, qtd_seinen)
+    cores = ('hotpink', '#ffcc99', '#66b3ff', '#99ff99')
+    
+    fig1, ax1 = plt.subplots()
+    #explsion
+    explode = (0.05,0.05,0.05,0.05)
+    ax1.pie(qtd, colors = cores, labels = opcoes, autopct = '% 1.1f %%', startangle = 45,pctdistance=0.85, explode = explode)
+
+    circulo_do_meio = plt.Circle((0,0), 0.70, fc = 'white') 
+    fig = plt.gcf() 
+    fig.gca().add_artist(circulo_do_meio)
+    
+    ax1.axis('equal')  
+    plt.tight_layout()
+    plt.legend(title = "Público")
+    plt.show()
+
+
+def plot_grafico_genero(dic_mangas):
+    
+    lista_generos = [dic_mangas[chave][8] for chave in dic_mangas]
+    
+    generos = []
+    for linha in lista_generos:
+        for valor in linha:
+            generos.append(valor)
+   
+    dic_generos = {i:generos.count(i) for i in generos}
+    
+    x = []
+    y = []
+    for chave in dic_generos:
+        y.append(chave)
+        x.append(dic_generos[chave])
+    
+    fig = plt.figure()
+    ax1 = fig.add_axes([0,0,1,1])
+    ax1.barh(y, x, color = '#c42929')
+    ax1.set_title("Gênero x Quantidade")
+    ax1.set_ylabel("Gêneros")
+    ax1.set_xlabel("Quantidade")
+    ax1.set_xticks(x)
+    plt.show()
+
+
+def plotar_grafico_venda_anual(lista_venda, ano_venda, nome):
+    
+    lista_venda = transformar_string_em_int(lista_venda)
+    lista_venda.sort()
+    
+    x = []
+    y = []
+    for ano, mes, qtd in lista_venda:
+        if ano == ano_venda:
+            x.append(mes)
+            y.append(qtd)
+    plt.bar(x, y, width = 0.5, color = '#f59d45')
+    plt.title(f"Venda de {ano_venda} do mangá {nome}")
+    plt.ylabel("Quantidade de volumes vendidos")
+    plt.xlabel("Mês")
+    plt.xticks([tam + 1.0 for tam in range(12)], ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], rotation=90)
+    plt.show()
+
+def plotar_grafico_venda_total(lista_venda, nome):
+    
+    lista_venda = transformar_string_em_int(lista_venda)
+    lista_venda.sort()
+    
+    print(lista_venda)
+    
+    ano_atual = lista_venda[0][0]
+    qtd_anual = 0
+    x = []
+    y = []
+    for ano, mes, qtd in lista_venda:
+        if ano_atual == ano:
+            qtd_anual += qtd
+        else:
+            x.append(str(ano_atual))
+            y.append(qtd_anual)
+            ano_atual = ano
+            qtd_anual = qtd
+            
+    x.append(str(ano_atual))
+    y.append(qtd_anual)
+
+    plt.plot(x, y, color = '#a80be0')
+    plt.title(f"Venda ao longo do tempo do mangá {nome}")
+    plt.ylabel("Quantidade de volumes vendidos")
+    plt.xlabel("Ano")
+    plt.show()
+
 n = 1
 lista_mangas = ler_arquivo()
 dic_mangas = construir_dicionario(lista_mangas)
+lista_venda = dic_mangas["MNG_KNY"][11]
 '''print(construir_dicionario)
 for i in range(n):
     adicionar_manga(dic_mangas)
 print(dic_mangas)'''
 
-buscar_manga(dic_mangas)
-exibir_dicionário_completo(dic_mangas)
-
+#buscar_manga(dic_mangas)
+#exibir_dicionário_completo(dic_mangas)
+plot_grafico_publico(dic_mangas)
+plot_grafico_genero(dic_mangas)
+plotar_grafico_venda_anual(lista_venda, 2019, "Citrus")
+plotar_grafico_venda_total(lista_venda, "KS")
