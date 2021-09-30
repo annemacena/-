@@ -297,7 +297,7 @@ def adicionar_genero(genero, cor):
     
     flag_adicionar_genero = True
     while flag_adicionar_genero == True:
-        gen = input((f"{cor}Entre com 1 gênero do mangá (Ex: Ação):{RESET} "))
+        gen = input((f"{cor} Entre com 1 gênero do mangá (Ex: Ação):{RESET} "))
         gen = gen.capitalize()
         
         if gen in genero:
@@ -306,7 +306,7 @@ def adicionar_genero(genero, cor):
             genero.append(gen)
             print(f"{VERDE_N}{gen} adicionado!{RESET}", end = '')
         
-        continua = input((f"{AZUL_N}Digite 'n' caso não deseje cadastrar outro gênero:{RESET} "))
+        continua = input((f"{AZUL_N} Digite 'n' caso não deseje cadastrar outro gênero:{RESET} "))
         if continua == "n":
             flag_adicionar_genero = False
 
@@ -317,17 +317,17 @@ def adicionar_genero(genero, cor):
 # Adiciona as vendas mensais
 def adicionar_vendas_mensais(venda_mensal, ano_inicio, cor):
     
-    print(f"\n{VERDE_N}Início do cadastro de vendas mensais do mangá.{RESET}")
+    print(f"\n{VERDE_N} Início do cadastro de vendas mensais do mangá.{RESET}")
 
     flag_cadastrar_venda = True
     while flag_cadastrar_venda == True:
-        ano_venda = int(input(f"{cor}Entre com o ano:{RESET} "))
+        ano_venda = int(input(f"{cor} Entre com o ano:{RESET} "))
         
         while ano_venda < ano_inicio:
             print(f"{AMARELO_N}Ano inválido! O mangá começou a ser publicado em {ano_inicio}.{RESET}")
             ano_venda = int(input(f"{cor}Entre com um ano válido:{RESET} "))
         
-        print(f"\n{cor}Entre com o número do mês", end = '')
+        print(f"\n{cor} Entre com o número do mês", end = '')
         mes_venda = int(input(f"1 - Jan, 2 - Fev, 3 - Mar, ..., 10 - Out, 11 - Nov, 12 - Dez:{RESET} "))
         
         while mes_venda < 1 or mes_venda > 12:
@@ -337,12 +337,12 @@ def adicionar_vendas_mensais(venda_mensal, ano_inicio, cor):
         flag_continua_cadastro = True
         for ano, mes, qtd in venda_mensal:
             if ano_venda == ano and mes_venda == mes:
-                print(f"{AMARELO_N}OPA! As vendas de {LISTA_MESES[mes_venda]} de {ano_venda} já foram cadastradas!!{RESET}")
+                print(f"{AMARELO_N} OPA! As vendas de {LISTA_MESES[mes_venda]} de {ano_venda} já foram cadastradas!!{RESET}")
                 flag_continua_cadastro = False
         
         if flag_continua_cadastro == True:
             
-            quantidade = int(input(f"{cor}Entre com a quantidade de cópias vendidas em {LISTA_MESES[mes_venda]} de {ano_venda}:{RESET} "))
+            quantidade = int(input(f"{cor} Entre com a quantidade de cópias vendidas em {LISTA_MESES[mes_venda]} de {ano_venda}:{RESET} "))
             
             while quantidade < 0 :
                 print(f"{AMARELO_N}O número de vendas não pode ser negativo!{RESET}")
@@ -350,7 +350,7 @@ def adicionar_vendas_mensais(venda_mensal, ano_inicio, cor):
 
             venda_mensal.append([ano_venda, mes_venda, quantidade])
         
-        continua = input((f"{cor}Digite 'n' caso não deseje cadastrar outra venda:{RESET} "))
+        continua = input((f"{cor} Digite 'n' caso não deseje cadastrar outra venda:{RESET} "))
 
         if continua == "n":
             flag_cadastrar_venda = False
@@ -487,8 +487,7 @@ def plot_grafico_genero(dic_mangas):
         y.append(chave)
         x.append(dic_generos[chave])
     
-    fig = plt.figure()
-    ax1 = fig.add_axes([0,0,1,1])
+    fig, ax1 = plt.subplots()
     ax1.barh(y, x, color = '#c42929')
     ax1.set_title("Gênero x Quantidade")
     ax1.set_ylabel("Gêneros")

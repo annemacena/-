@@ -22,7 +22,6 @@ if __name__ == '__main__':
         print(f"//  Digite a opção abaixo  //")
         print(f"  --------------------------{RESET}")
             
-        flag_imprimir_menu = True
         opcao = input(f"{cor}{EMOJI_OPCAO}{RESET}")
 
         if(opcao != "10"): 
@@ -59,7 +58,6 @@ if __name__ == '__main__':
                 
             else:
                 print(f"\n{AMARELO_N}  Opção inválida (╯°益°)╯彡┻━┻\n       Digite um número de 1 a 10!{RESET}\n")
-                flag_imprimir_menu = True
                 
             input(f"\n{AMARELO_N}Aperte Enter para continuar... {RESET}")
             print("\n\n\n")
