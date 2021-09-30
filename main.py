@@ -3,7 +3,7 @@
 # Laianna Lana Virginio da Silva - llvs2@cin.ufpe.br    |
 # ------------------------------------------------------
 from funcionalidade import *
-from helper import construir_dicionario, imprimir_bem_vindo, imprimir_menu
+from helper import construir_dicionario, imprimir_bem_vindo, imprimir_menu, imprimir_msg_adeus
 from arquivo import ler_arquivo
 from globais import EMOJI_OPCAO, CIANO_N, AMARELO_N, RESET
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
             print("\n\n\n")
 
         else:
-            print("\n\n\n  。。。ミヽ(。＞-＜)ノ Saindo...")
+            imprimir_msg_adeus()
 
 
-    print("\n  byebye (｡•́︿•̀｡)")
+    print(f"\n{AMARELO_N}  byebye (｡•́︿•̀｡){RESET}")
