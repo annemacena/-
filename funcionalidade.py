@@ -115,7 +115,7 @@ def deletar_manga(dic_mangas):
     if id in dic_mangas.keys():
         dic_mangas.pop(id)
         atualizar_arquivo(dic_mangas)
-        print(f"{VERDE}{NEGRITO}Mangá removido com sucesso!{RESET}\n\n")
+        print(f"{VERDE}{NEGRITO}\nMangá removido com sucesso!{RESET}\n\n")
     else:
         print(f"{AMARELO}{NEGRITO}O ID = {id} não está cadastrado.{RESET}\n\n")
 
@@ -135,7 +135,6 @@ def visualizar_grafico_vendas_anuais(dic_mangas):
     else:
         print(f"{AMARELO}{NEGRITO}Infelizmente, o ID que você inseriu não está cadastrado.{RESET}")
 
-
 def visualizar_grafico_vendas_totais(dic_mangas):
     
     cor = AZUL_N
@@ -151,7 +150,6 @@ def visualizar_grafico_vendas_totais(dic_mangas):
 
     else:
         print(f"{AMARELO}{NEGRITO}Infelizmente, o ID que você inseriu não está cadastrado.{RESET}\n")    
-    
 
 def visualizar_grafico_genero(dic_mangas):
     
@@ -162,8 +160,7 @@ def visualizar_grafico_genero(dic_mangas):
 
     else:
         
-        print(f"{AMARELO}{NEGRITO}Infelizmente, não existe nennhum mangá cadastrado.{RESET}\n")  
-
+        print(f"{AMARELO}{NEGRITO}Infelizmente, não existe nenhum mangá cadastrado.{RESET}\n")  
 
 def visualizar_grafico_publico(dic_mangas):
 
@@ -173,7 +170,7 @@ def visualizar_grafico_publico(dic_mangas):
 
     else:
         
-        print(f"{AMARELO}{NEGRITO}Infelizmente, não existe nennhum mangá cadastrado.{RESET}\n")  
+        print(f"{AMARELO}{NEGRITO}Infelizmente, não existe nenhum mangá cadastrado.{RESET}\n")  
     
     
     
