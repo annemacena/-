@@ -547,7 +547,7 @@ def imprimir_bem_vindo():
     print(f"\n      {UNDERLINE}Seja bem-vinde ao MangaList!{RESET}\n")
 
 def imprimir_menu():
-    print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
+    print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕")
     print(f"      ⡫                             ⡣")
     print(f"      ⡫   O que você deseja fazer?  ⡣")
     print(f"      ⡫   Escolha uma opção:        ⡣")
@@ -566,7 +566,7 @@ def imprimir_menu():
     print(f"      ⢱ {NEGRITO}9.{RESET}  Gráfico de proporção    ⣈")
     print(f"      ⡀     do público alvo         ⠁")
     print(f"      ⣌ {NEGRITO}10.{RESET} Sair                    ⣌")
-    print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
+    print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕")
 
 def imprimir_busca_manga():
     print(f"\n")

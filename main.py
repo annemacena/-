@@ -1,3 +1,7 @@
+# ------------------------------------------------------
+# Arianne Santos da Macena - asm7@cin.ufpe.br           |
+# Laianna Lana Virginio da Silva - llvs2@cin.ufpe.br    |
+# ------------------------------------------------------
 from funcionalidade import *
 from helper import construir_dicionario, imprimir_bem_vindo, imprimir_menu
 from arquivo import ler_arquivo
