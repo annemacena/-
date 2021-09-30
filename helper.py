@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 from globais import LISTA_MESES
-from globais import AMARELO_N, VERDE_N, CIANO_N, VERMELHO_N, AZUL_N, RESET
+from globais import MAGENTA_N, AMARELO_N, VERDE_N, CIANO_N, VERMELHO_N, AZUL_N, RESET, UNDERLINE
 
-AMARELO = '\u001b[33m'
 CIANO = '\u001b[36m'
 RESET = '\u001b[0m'
 NEGRITO = '\u001b[1m'
@@ -543,9 +542,9 @@ def imprimir_bem_vindo():
     print(f"      ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠")
     print(f"      ⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙")
     print(f"      ⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣")
-    print(f"      ⡆⠉⠉⠉⠉⠉⠉ マンガリスト。⠉⠉⠉⠉⠉⠉⠉⠙")
+    print(f"      ⡆⠉⠉⠉⠉⠉⠉ {VERMELHO_N}マ{RESET}{MAGENTA_N}ン{RESET}{AMARELO_N}ガ{RESET}{VERDE_N}リ{RESET}{CIANO_N}ス{RESET}{AZUL_N}ト{RESET}。⠉⠉⠉⠉⠉⠉⠉⠙")
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
-    print(f"\n      Seja bem-vinde ao MangaList!\n")
+    print(f"\n      {UNDERLINE}Seja bem-vinde ao MangaList!{RESET}\n")
 
 def imprimir_menu():
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
@@ -553,20 +552,20 @@ def imprimir_menu():
     print(f"      ⡫   O que você deseja fazer?  ⡣")
     print(f"      ⡫   Escolha uma opção:        ⡣")
     print(f"      ⡫                             ⡣")
-    print(f"      ⢱ 1.  Adicionar um mangá      ⢗")
-    print(f"      ⢄ 2.  Visualizar todos mangás ⣈")
-    print(f"      ⡀ 3.  Visualizar um mangá     ⠁")
-    print(f"      ⡄ 4.  Editar um mangá         ⠼")
-    print(f"      ⢱ 5.  Excluir um mangá        ⢗")
-    print(f"      ⡀ 6.  Gráfico de venda        ⠁")
+    print(f"      ⢱ {NEGRITO}1.{RESET}  Adicionar um mangá      ⢗")
+    print(f"      ⢄ {NEGRITO}2.{RESET}  Visualizar todos mangás ⣈")
+    print(f"      ⡀ {NEGRITO}3.{RESET}  Visualizar um mangá     ⠁")
+    print(f"      ⡄ {NEGRITO}4.{RESET}  Editar um mangá         ⠼")
+    print(f"      ⢱ {NEGRITO}5.{RESET}  Excluir um mangá        ⢗")
+    print(f"      ⡀ {NEGRITO}6.{RESET}  Gráfico de venda        ⠁")
     print(f"      ⡄     anual de um mangá       ⠁")
-    print(f"      ⡄ 7.  Gráfico de vendas de um ⠼")
+    print(f"      ⡄ {NEGRITO}7.{RESET}  Gráfico de vendas de um ⠼")
     print(f"      ⡀     mangá ao longo dos anos ⠁")
-    print(f"      ⢄ 8.  Gráfico de proporção    ⣈")
+    print(f"      ⢄ {NEGRITO}8.{RESET}  Gráfico de proporção    ⣈")
     print(f"      ⡀     dos gêneros cadastrados ⠁")
-    print(f"      ⢱ 9.  Gráfico de proporção    ⣈")
+    print(f"      ⢱ {NEGRITO}9.{RESET}  Gráfico de proporção    ⣈")
     print(f"      ⡀     do público alvo         ⠁")
-    print(f"      ⣌ 10. Sair                    ⣌")
+    print(f"      ⣌ {NEGRITO}10.{RESET} Sair                    ⣌")
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
 
 def imprimir_busca_manga():
