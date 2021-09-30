@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from globais import LISTA_MESES
+from globais import AMARELO_N, VERDE_N, CIANO_N, VERMELHO_N, AZUL_N, RESET
 
 AMARELO = '\u001b[33m'
 CIANO = '\u001b[36m'
@@ -151,17 +152,17 @@ def checar_id(id, dic_mangas):
     
     for chaves_manga in dic_mangas.keys():
         if id == chaves_manga:
-            print(f"ID repetido, por favor insira outro ID.")
+            print(f"{AMARELO_N}ID repetido, por favor insira outro ID.{RESET}")
             return True
     
     return False
 # ------------------------------------ID--------------------------------------#
 # pede um novo ID ao usuário para cadastro e checa o valor desse ID
 def adicionar_id(dic_mangas):
-    
+
     flag_id_repetido = True
     while flag_id_repetido == True:
-        id = input(("Entre com o ID único do novo mangá: "))
+        id = input((f"{AZUL_N}Entre com o ID único do novo mangá:{RESET} "))
         flag_id_repetido = checar_id(id, dic_mangas)
         
     return id
@@ -176,15 +177,15 @@ def checar_status(status):
     if status == "COMPLETO" or status == "ANDAMENTO" or status == "CANCELADO" or status == "HIATO":
         return True
 
-    print(f"Status incorreto, por favor insira um status válido.")   
+    print(f"{AMARELO_N}Status incorreto, por favor insira um status válido.{RESET}")   
     return False
 # ----------------------------------STATUS------------------------------------#
 # pede o status do mangá ao usuário e checa se é válido
-def adicionar_status():
+def adicionar_status(cor):
     
     flag_status_valido = False
     while flag_status_valido == False:
-        status = input(("Entre com o status do mangá - Completo ou Andamento ou Cancelado ou Hiato - : "))
+        status = input((f"{cor}Entre com o status do mangá - Completo ou Andamento ou Cancelado ou Hiato - :{RESET} "))
         flag_status_valido = checar_status(status.upper())
         
     return status.capitalize()
@@ -199,15 +200,15 @@ def checar_ano_inicio(ano_inicio):
     if ano_inicio >= 0:
         return True
     
-    print(f"O ano do início da publicação não é válido, por favor insira um ano válido.")   
+    print(f"{AMARELO_N}O ano do início da publicação não é válido, por favor insira um ano válido.{RESET}")   
     return False
 # -------------------------------ANO DE INICIO--------------------------------#
 # pede o ano que o mangá começou a ser publicado e checa se é válido
-def adicionar_ano_inicio():
+def adicionar_ano_inicio(cor):
     
     flag_ano_inicio_valido = False
     while flag_ano_inicio_valido == False:
-        ano_inicio = int(input(("Entre com o ano que o mangá começou a ser publicado: ")))
+        ano_inicio = int(input((f"{cor}Entre com o ano que o mangá começou a ser publicado:{RESET} ")))
         flag_ano_inicio_valido = checar_ano_inicio(ano_inicio)
         
     return ano_inicio
@@ -222,11 +223,11 @@ def checar_ano_fim(ano_fim, ano_inicio):
     if ano_fim >= ano_inicio:
         return True
     
-    print(f"O ano do termino da publicação não é válido, por favor insira um ano válido.")   
+    print(f"{AMARELO_N}O ano de termino da publicação não pode ser menor que {ano_inicio}, por favor insira um ano válido.{RESET}")   
     return False
 # --------------------------------ANO DE FIM----------------------------------#
 # pede o ano que o mangá terminou de ser publicado e checa se é válido
-def adicionar_ano_fim(status, ano_inicio):
+def adicionar_ano_fim(status, ano_inicio, cor):
     
     # Se o mangá estiver em Andamento ou em Hiato,
     # ele ainda não terminou de ser publicado
@@ -236,7 +237,7 @@ def adicionar_ano_fim(status, ano_inicio):
     # status == "Completo" or status == "Cancelado"
     flag_ano_fim_valido = False
     while flag_ano_fim_valido == False:
-        ano_fim = int(input(("Entre com o ano que o mangá terminou de ser publicado: ")))
+        ano_fim = int(input((f"{cor}Entre com o ano que o mangá terminou de ser publicado:{RESET} ")))
         flag_ano_fim_valido = checar_ano_fim(ano_fim, ano_inicio)
         
     return ano_fim
@@ -251,15 +252,15 @@ def checar_num_volumes(num_de_volumes):
     if num_de_volumes >= 1:
         return True
     
-    print(f"O número de volumes não é válido, por favor insira um valor válido.")   
+    print(f"{AMARELO_N}O número de volumes não é válido, por favor insira um valor válido.{RESET}")   
     return False
 # -----------------------------NUMERO DE VOLUMES------------------------------#
 # pede o número de volumes do mangá e checa se é esse número é válido
-def adicionar_num_volumes():
+def adicionar_num_volumes(cor):
     
     flag_num_volumes_valido = False
     while flag_num_volumes_valido == False:
-        num_de_volumes = int(input(("Entre com a quantidade de volumes que o mangá possui: ")))
+        num_de_volumes = int(input((f"{cor}Entre com a quantidade de volumes que o mangá possui:{RESET} ")))
         flag_num_volumes_valido = checar_num_volumes(num_de_volumes)
         
     return num_de_volumes
@@ -274,15 +275,15 @@ def checar_publico(publico):
     if publico == "SHOJO" or publico == "JOSEI" or publico == "SHONEN" or publico == "SEINEN":
         return True
     
-    print(f"Publico incorreto, por favor insira o publico correto.")   
+    print(f"{AMARELO_N}Público incorreto, por favor insira o publico correto.{RESET}")   
     return False
 # ---------------------------------PUBLICO------------------------------------#
 # pede o publico do mangá ao usuário e checa se é válido
-def adicionar_publico():
+def adicionar_publico(cor):
     
     flag_publico_valido = False
     while flag_publico_valido == False:
-        publico = input(("Entre com o público alvo do mangá - Shojo ou Josei ou Shonen ou Seinen - : "))
+        publico = input((f"{cor}Entre com o público alvo do mangá - Shojo ou Josei ou Shonen ou Seinen - :{RESET} "))
         flag_publico_valido = checar_publico(publico.upper())
         
     return publico.capitalize()
@@ -292,14 +293,20 @@ def adicionar_publico():
 # ----------------------------------GENERO------------------------------------#
 # ----------------------------------------------------------------------------#
 # pede o genero do mangá ao usuário
-def adicionar_genero(genero):
+def adicionar_genero(genero, cor):
     
     flag_adicionar_genero = True
     while flag_adicionar_genero == True:
-        gen = input(("Entre com o genero do mangá: "))
-        genero.append(gen.capitalize())
+        gen = input((f"{cor}Entre com 1 gênero do mangá (Ex: Ação):{RESET} "))
+        gen = gen.capitalize()
         
-        continua = input(("Você deseja cadastrar um novo genero? s/n: "))
+        if gen in genero:
+            print(f"{AMARELO_N}O gênero {gen} já está cadastrado!{RESET}")
+        else:
+            genero.append(gen)
+            print(f"{VERDE_N}{gen} adicionado!{RESET}", end = '')
+        
+        continua = input((f"{AZUL_N}Digite 'n' caso não deseje cadastrar outro gênero:{RESET} "))
         if continua == "n":
             flag_adicionar_genero = False
 
@@ -308,52 +315,67 @@ def adicionar_genero(genero):
 # ------------------------------VENDAS MENSAIS--------------------------------#
 # ----------------------------------------------------------------------------#
 # Adiciona as vendas mensais
-def adicionar_vendas_mensais(venda_mensal, ano_inicio):
+def adicionar_vendas_mensais(venda_mensal, ano_inicio, cor):
     
-    print(f"\nInício do cadastro de vendas mensais do mangá.")
+    print(f"\n{VERDE_N}Início do cadastro de vendas mensais do mangá.{RESET}")
 
     flag_cadastrar_venda = True
     while flag_cadastrar_venda == True:
-        ano_venda = int(input("Entre com o ano: "))
+        ano_venda = int(input(f"{cor}Entre com o ano:{RESET} "))
         
         while ano_venda < ano_inicio:
-            ano_venda = int(input("Ano inválido. Entre com um ano válido: "))
+            print(f"{AMARELO_N}Ano inválido! O mangá começou a ser publicado em {ano_inicio}.{RESET}")
+            ano_venda = int(input(f"{cor}Entre com um ano válido:{RESET} "))
         
-        mes_venda = int(input("Entre com o mês: "))
+        print(f"\n{cor}Entre com o número do mês", end = '')
+        mes_venda = int(input(f"1 - Jan, 2 - Fev, 3 - Mar, ..., 10 - Out, 11 - Nov, 12 - Dez:{RESET} "))
         
         while mes_venda < 1 or mes_venda > 12:
-            mes_venda = int(input("Mês inválido. Entre com um mês válido: "))
+            print(f"{AMARELO_N}Mês inválido! 1 - Jan, 2 - Fev, 3 - Mar, 4 - Abr, 5 - Mai, 6 - Jun, 7 - Jul, 8 - Ago, 9 - Set, 10 - Out, 11 - Nov, 12 - Dec{RESET}")
+            mes_venda = int(input(f"{cor}Entre com um mês válido:{RESET} "))
+              
+        flag_continua_cadastro = True
+        for ano, mes, qtd in venda_mensal:
+            if ano_venda == ano and mes_venda == mes:
+                print(f"{AMARELO_N}OPA! As vendas de {LISTA_MESES[mes_venda]} de {ano_venda} já foram cadastradas!!{RESET}")
+                flag_continua_cadastro = False
         
-        quantidade = int(input("Entre com a quantidade de vendas: "))
+        if flag_continua_cadastro == True:
+            
+            quantidade = int(input(f"{cor}Entre com a quantidade de cópias vendidas em {LISTA_MESES[mes_venda]} de {ano_venda}:{RESET} "))
+            
+            while quantidade < 0 :
+                print(f"{AMARELO_N}O número de vendas não pode ser negativo!{RESET}")
+                quantidade = int(input(f"{cor}Entre com o número de vendas mensal válido:{RESET} "))
 
-        while quantidade < 0 :
-            quantidade = int(input("Número de vendas mensal inválido. Entre com um valor válido: "))
+            venda_mensal.append([ano_venda, mes_venda, quantidade])
         
-        continua = input(("Você deseja cadastrar outra venda? s/n: "))
+        continua = input((f"{cor}Digite 'n' caso não deseje cadastrar outra venda:{RESET} "))
+
         if continua == "n":
             flag_cadastrar_venda = False
-            
-        venda_mensal.append([ano_venda, mes_venda, quantidade])
         
     venda_mensal.sort()
 
 def obter_atributos_manga():
     
-    nome = input(("Entre com o nome do mangá: "))
-    autor = input(("Entre com o nome do autor do mangá: "))
-    status = adicionar_status()
-    ano_inicio = adicionar_ano_inicio()
-    ano_fim = adicionar_ano_fim(status, int(ano_inicio))
-    sinopse = input(("Entre com a sinopse do mangá: "))
-    num_de_volumes = adicionar_num_volumes()
-    publico = adicionar_publico()
+    cor = AZUL_N
+    
+    nome = input((f"{cor}Entre com o nome do mangá:{RESET} "))
+    autor = input((f"{cor}Entre com o nome do autor do mangá:{RESET} "))
+    status = adicionar_status(cor)
+    ano_inicio = adicionar_ano_inicio(cor)
+    ano_fim = adicionar_ano_fim(status, int(ano_inicio), cor)
+    sinopse = input((f"{cor}Entre com a sinopse do mangá:{RESET} "))
+    num_de_volumes = adicionar_num_volumes(cor)
+    publico = adicionar_publico(cor)
     genero = []
-    adicionar_genero(genero)
-    impressao = input(("Entre com a gráfica de impressão do mangá: "))
-    revista = input(("Entre com a revista de publicação do mangá: "))
+    adicionar_genero(genero, cor)
+    impressao = input((f"{cor}Entre com a gráfica de impressão do mangá:{RESET} "))
+    revista = input((f"{cor}Entre com a revista de publicação do mangá:{RESET} "))
     venda_mensal = []
-    adicionar_vendas_mensais(venda_mensal, int(ano_inicio))
-    print("\n\n\n")
+    adicionar_vendas_mensais(venda_mensal, int(ano_inicio), cor)
+    print("\n")
 
     return [nome, autor, status, ano_inicio, ano_fim, sinopse, num_de_volumes, publico, genero, impressao, revista, venda_mensal]
 
@@ -377,7 +399,7 @@ def exibir_vendas(venda_mensal, cor_tit, cor_inf):
             print(f"{cor_inf}Ano: {ano_atual}")
 
         print(f"    {LISTA_MESES[mes]} - {quantidade} cópia", end = '')
-        print("s vendidas" if quantidade > 1 else " vendida")  
+        print(f"s vendidas" if quantidade > 1 else " vendida")  
         
         
 # ----------------------------------------------------------------------------#
@@ -388,7 +410,7 @@ def exibir_vendas(venda_mensal, cor_tit, cor_inf):
 # ----------------------------------------------------------------------------#
 def plotar_grafico_venda_anual(lista_venda, ano_venda, nome):
     
-    lista_venda.sort()
+    #lista_venda.sort()
     
     x = []
     y = []
@@ -400,17 +422,17 @@ def plotar_grafico_venda_anual(lista_venda, ano_venda, nome):
     if not x == []:
         plt.bar(x, y, width = 0.5, color = '#f59d45')
         plt.title(f"Venda de {ano_venda} do mangá {nome}")
-        plt.ylabel("Quantidade de volumes vendidos")
-        plt.xlabel("Mês")
+        plt.ylabel(f"Quantidade de volumes vendidos")
+        plt.xlabel(f"Mês")
         plt.xticks([tam + 1.0 for tam in range(12)], ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], rotation=90)
         plt.show()
     else:
-        print("\nNão existe nenhum registro de venda nesse ano.\n\n\n")
+        print(f"\n{AMARELO_N}Não existe nenhum registro de venda nesse ano.{RESET}")
 # ----------------------------------------------------------------------------#
 # ----------------------------------------------------------------------------#
 def plotar_grafico_venda_total(lista_venda, nome):
     
-    lista_venda.sort()
+    #lista_venda.sort()
     
     ano_atual = lista_venda[0][0]
     qtd_anual = 0
@@ -434,7 +456,7 @@ def plotar_grafico_venda_total(lista_venda, nome):
         y.append(qtd_anual)
     
     if len(x) == 1:
-        print ("Apenas um ano foi cadastrado. Aconselho plotar o gráfico de venda anual da opção 6.\n\n\n")
+        print(f"{AMARELO_N}Apenas um ano foi cadastrado. Aconselho plotar o gráfico de venda anual da opção 6.{RESET}")
     elif not x == []:
         '''x.append(str(ano_atual))
         y.append(qtd_anual)'''
@@ -445,7 +467,7 @@ def plotar_grafico_venda_total(lista_venda, nome):
         plt.xlabel("Ano")
         plt.show()
     else:
-        print("\nNão existe nenhum registro de venda para esse mangá.\n\n\n")
+        print(f"\n{AMARELO_N}Não existe nenhum registro de venda para esse mangá.{RESET}")
 # ----------------------------------------------------------------------------#
 # ----------------------------------------------------------------------------#
 def plot_grafico_genero(dic_mangas):
@@ -549,7 +571,7 @@ def imprimir_menu():
     print(f"      ⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈⢐⢕⢐⢕⢕⠈")
 
 def imprimir_busca_manga():
-    print(f"\n\n\n")
+    print(f"\n")
     print("⣿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣿⠛⠉⣉⣀⣀⣈⠉⠻⠿⣿⣿⡿⠿⠿⠿⠿⣿⣿⣿")
     print("⣿⠛⠁⣠⣤⣤⣤⣄⠈⠋⠁⠠⣾⡿⠛⠛⣿⣿⡄⠄⠄⠄⠠⣴⣶⣦⣤⡀⠙⢿")
     print("⠃⢰⣿⠿⠛⠛⢿⣿⡇⠄⠄⠄⠄⠄⠄⢀⣾⡿⠁⠄⠂⠂⠄⠘⠉⠙⠻⣿⣦⠈")

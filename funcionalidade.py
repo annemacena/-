@@ -1,14 +1,8 @@
-from globais import EMOJI_OPCAO
+from globais import EMOJI_OPCAO, VERMELHO, VERDE, AMARELO, CIANO, RESET, NEGRITO, AZUL_N, CIANO_N
 from arquivo import atualizar_arquivo
 from helper import adicionar_id, obter_atributos_manga, exibir_valores_dicionario
 from helper import imprimir_busca_manga, imprimir_msg_nao_encontrado
 from helper import plotar_grafico_venda_anual, plotar_grafico_venda_total, plot_grafico_genero, plot_grafico_publico
-
-
-AMARELO = '\u001b[33m'
-CIANO = '\u001b[36m'
-RESET = '\u001b[0m'
-NEGRITO = '\u001b[1m'
 
 def adicionar_manga(dic_mangas):
 
@@ -16,7 +10,9 @@ def adicionar_manga(dic_mangas):
     dic_mangas[id] = obter_atributos_manga()
 
     atualizar_arquivo(dic_mangas)
-    print(f"Cadastro efetuado com sucesso.")
+    print(f"{VERDE}{NEGRITO}  ----------------------------------")
+    print(f"//  Cadastro efetuado com sucesso  //")
+    print(f"  ----------------------------------{RESET}\n\n")
 
 
 def exibir_dicionário_completo(dic_mangas):
@@ -95,7 +91,9 @@ def atualizar_manga(dic_mangas):
     '''
 
     imprimir_busca_manga()
-    id = input(EMOJI_OPCAO)
+    
+    cor = CIANO_N
+    id = input(f"{cor}{EMOJI_OPCAO}{RESET}")
 
     dic_mangas[id] = obter_atributos_manga()
     atualizar_arquivo(dic_mangas)
@@ -110,30 +108,39 @@ def deletar_manga(dic_mangas):
     '''
     
     imprimir_busca_manga()
-    id = input(EMOJI_OPCAO)
-
-    dic_mangas.pop(id)
-    atualizar_arquivo(dic_mangas)
-
-def visualizar_grafico_vendas_anuais(dic_mangas):
     
-    id = input("Digite o ID do mangá que deseja ver a venda anual: ")
+    cor = CIANO_N
+    id = input(f"{cor}{EMOJI_OPCAO}{RESET}")
     
     if id in dic_mangas.keys():
-        ano_venda = int(input("Digite o ano que você deseja ver a venda: "))
+        dic_mangas.pop(id)
+        atualizar_arquivo(dic_mangas)
+        print(f"{VERDE}{NEGRITO}Mangá removido com sucesso!{RESET}\n\n")
+    else:
+        print(f"{AMARELO}{NEGRITO}O ID = {id} não está cadastrado.{RESET}\n\n")
+
+def visualizar_grafico_vendas_anuais(dic_mangas):
+
+    cor = AZUL_N
+    
+    id = input(f"{cor}Digite o ID do mangá que deseja ver a venda anual:{RESET} ")
+    
+    if id in dic_mangas.keys():
+        ano_venda = int(input(f"{cor}Digite o ano que você deseja ver a venda:{RESET} "))
         
         nome = dic_mangas[id][0]
         lista_venda = dic_mangas[id][11]        
 
         plotar_grafico_venda_anual(lista_venda, ano_venda, nome)
     else:
-        print("Infelizmente, o ID que você inseriu não está cadastrado.")
-    
+        print(f"{AMARELO}{NEGRITO}Infelizmente, o ID que você inseriu não está cadastrado.{RESET}")
+
 
 def visualizar_grafico_vendas_totais(dic_mangas):
     
-    id = input("Digite o ID do mangá que deseja ver a venda ao longo dos anos: ")
-    print("\n\n")
+    cor = AZUL_N
+    
+    id = input(f"{cor}Digite o ID do mangá que deseja ver a venda ao longo dos anos:{RESET} ")
     
     if id in dic_mangas.keys():
         
@@ -143,7 +150,7 @@ def visualizar_grafico_vendas_totais(dic_mangas):
         plotar_grafico_venda_total(lista_venda, nome)
 
     else:
-        print("Infelizmente, o ID que você inseriu não está cadastrado.\n\n\n")    
+        print(f"{AMARELO}{NEGRITO}Infelizmente, o ID que você inseriu não está cadastrado.{RESET}\n")    
     
 
 def visualizar_grafico_genero(dic_mangas):
@@ -155,7 +162,7 @@ def visualizar_grafico_genero(dic_mangas):
 
     else:
         
-        print("Infelizmente, não existe nennhum mangá cadastrado.\n\n\n")  
+        print(f"{AMARELO}{NEGRITO}Infelizmente, não existe nennhum mangá cadastrado.{RESET}\n")  
 
 
 def visualizar_grafico_publico(dic_mangas):
@@ -166,7 +173,7 @@ def visualizar_grafico_publico(dic_mangas):
 
     else:
         
-        print("Infelizmente, não existe nennhum mangá cadastrado.\n\n\n")  
+        print(f"{AMARELO}{NEGRITO}Infelizmente, não existe nennhum mangá cadastrado.{RESET}\n")  
     
     
     
